@@ -1,0 +1,164 @@
+#nav-toggle {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    height: 36px;
+    cursor: pointer;
+}
+
+#nav-toggle>div {
+    position: relative;
+    width: 36px;
+}
+
+#nav-toggle span {
+    height: 1px;
+    left: 9px;
+    display: block;
+    background: #fff;
+    position: absolute;
+    transition: transform 0.3s ease-in-out, top 0.2s ease;
+}
+
+#nav-toggle span:nth-child(1) {
+    top: 12px;
+    width: 26%;
+}
+
+#nav-toggle span:nth-child(2) {
+    top: 18px;
+    width: 48%;
+}
+
+#nav-toggle span:nth-child(3) {
+    top: 24px;
+    width: 13%;
+}
+
+.open #nav-toggle span {
+    background: #fff;
+}
+
+.open #nav-toggle span:nth-child(1) {
+    top: 18px;
+    transform: rotate(45deg);
+    width: 48%;
+}
+
+.open #nav-toggle span:nth-child(2) {
+    top: 18px;
+    width: 0;
+    left: 50%;
+}
+
+.open #nav-toggle span:nth-child(3) {
+    top: 18px;
+    transform: rotate(-45deg);
+    width: 48%;
+}
+
+#nav-toggle {
+    z-index: 1000;
+    background-color: rgb(45, 88, 229);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgb(164, 163, 163);
+}
+
+#container {
+    z-index: 900;
+}
+
+#gloval-nav {
+    background: #fff;
+    color: rgb(45, 88, 229);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 990;
+    text-align: center;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#gloval-nav a {
+    display: block;
+    font-weight: bold;
+    color: rgb(45, 88, 229);
+    text-decoration: none;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.nav__logout {
+    color: rgb(45, 88, 229);
+    background-color: #fff;
+    border: none;
+    font-size:32px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav__logout:hover {
+    color: #666;
+}
+
+#gloval-nav a:hover {
+    color: #666;
+}
+
+#gloval-nav ul {
+    list-style: none;
+}
+
+#gloval-nav ul li {
+    opacity: 0;
+    transform: translateX(200px);
+    transition: transform 0.3s ease, opacity 0.1s ease;
+}
+
+#gloval-nav ul li:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+#gloval-nav ul li:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+#gloval-nav ul li:nth-child(4) {
+    transition-delay: 0.45s;
+}
+
+#gloval-nav ul li:nth-child(5) {
+    transition-delay: 0.6s;
+}
+
+#gloval-nav ul li:nth-child(6) {
+    transition-delay: 0.75s;
+}
+
+#gloval-nav ul li:nth-child(7) {
+    transition-delay: 0.9s;
+}
+
+.open {
+    overflow: hidden;
+}
+
+.open #gloval-nav {
+    visibility: visible;
+    opacity: 1;
+}
+
+.open #gloval-nav li {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 1s ease, opacity 0.9s ease;
+}

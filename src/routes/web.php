@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/thanks', [ShopController::class, 'thanks']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/', [ShopController::class, 'index']);
+    Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+    Route::get('/done', [ShopController::class, 'store']);
+    Route::get('/mypage', [ShopController::class, 'mypage']);
 });
