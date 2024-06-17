@@ -37,7 +37,7 @@
                             <li class="nav__item">
                                 <form class="form" action="/logout" method="post">
                                     @csrf
-                                        <button class="nav__logout">Logout</button>
+                                        <input class="nav__logout" type="submit" value="Logout">
                                 </form>
                             </li>
                             <li class="nav__item">
@@ -61,7 +61,9 @@
                     Rese
                 </a>
             </div>
+            <div class="header__search">
             @yield('shop_search')
+            </div>
         </div>
     </header>
     <main>
@@ -78,6 +80,7 @@
         });
         })(jQuery);
     </script>
+    @yield('script')
 </body>
 
 </html>

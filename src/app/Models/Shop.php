@@ -13,4 +13,19 @@ class Shop extends Model
     protected $guarded = [
         'id',
     ];
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class,  'shop_id');
+    }
+
+    public function favorite_users()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'shop_id', 'user_id');
+    }
 }

@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-<div class="content">
-  <div class="content__heading">
-    <h1>Login</h1>
+<div class="card">
+  <div class="card__heading">
+    <h2>Login</h2>
   </div>
-  <div class="login__content">
+  <div class="card__content">
     <form class="form"  action="/login" method="post">
       @csrf
       <div class="form__group">

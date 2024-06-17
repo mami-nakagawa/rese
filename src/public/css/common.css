@@ -1,19 +1,36 @@
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 150px 30px;
+    background-color: #f6f5f5;
+    position: fixed;
+    width: 100%;
+}
+
+.header__logo {
+    font-size: 32px;
+    text-decoration: none;
+    font-weight: bold;
+    color: rgb(45, 88, 229);
+    padding-left: 10px;
+}
+
 #nav-toggle {
     position: fixed;
-    top: 25px;
-    left: 25px;
-    height: 36px;
+    top: 34px;
+    left: 100px;
+    height: 40px;
     cursor: pointer;
 }
 
 #nav-toggle>div {
     position: relative;
-    width: 36px;
+    width: 40px;
 }
 
 #nav-toggle span {
     height: 1px;
-    left: 9px;
+    left: 10px;
     display: block;
     background: #fff;
     position: absolute;
@@ -21,17 +38,17 @@
 }
 
 #nav-toggle span:nth-child(1) {
-    top: 12px;
+    top: 14px;
     width: 26%;
 }
 
 #nav-toggle span:nth-child(2) {
-    top: 18px;
+    top: 20px;
     width: 48%;
 }
 
 #nav-toggle span:nth-child(3) {
-    top: 24px;
+    top: 26px;
     width: 13%;
 }
 
@@ -40,19 +57,19 @@
 }
 
 .open #nav-toggle span:nth-child(1) {
-    top: 18px;
+    top: 20px;
     transform: rotate(45deg);
     width: 48%;
 }
 
 .open #nav-toggle span:nth-child(2) {
-    top: 18px;
+    top: 20px;
     width: 0;
     left: 50%;
 }
 
 .open #nav-toggle span:nth-child(3) {
-    top: 18px;
+    top: 20px;
     transform: rotate(-45deg);
     width: 48%;
 }
@@ -66,6 +83,9 @@
 
 #container {
     z-index: 900;
+    height: 100%;
+    margin: 0 auto;
+    padding: 110px 100px;
 }
 
 #gloval-nav {
@@ -90,7 +110,6 @@
 
 #gloval-nav a {
     display: block;
-    font-weight: bold;
     color: rgb(45, 88, 229);
     text-decoration: none;
     padding: 10px 0;
@@ -101,8 +120,7 @@
     color: rgb(45, 88, 229);
     background-color: #fff;
     border: none;
-    font-size:32px;
-    font-weight: bold;
+    font-size:29px;
     cursor: pointer;
 }
 
@@ -161,4 +179,11 @@
     opacity: 1;
     transform: translateX(0);
     transition: transform 1s ease, opacity 0.9s ease;
+}
+
+body {
+    height: 100%;
+    margin: 0 auto;
+    background-color: #f6f5f5;
+    font-family: Helvetica, sans-serif;
 }
