@@ -69,6 +69,20 @@ class ShopController extends Controller
         return view('shop-detail', compact('user', 'shop', 'today'));
     }
 
+    public function reservationUpdate(Request $request)
+    {
+        $reservation = Reservation::find($request->id);
+        $reservation->update(
+            $request->only([
+                'date',
+                'time',
+                'number',
+            ])
+        );
+
+        return redirect()->back();
+    }
+
     public function reservation(ReservationRequest $request)
     {
         Reservation::create(
@@ -132,7 +146,8 @@ class ShopController extends Controller
         $user = Auth::user();
         $reservations = Reservation::where('user_id',$user->id)->get();
         $favorites = Favorite::where('user_id',$user->id)->get();
+        $today = Carbon::today()->format('Y-m-d');
 
-        return view('mypage', compact('user', 'reservations', 'favorites'));
+        return view('mypage', compact('user', 'reservations', 'favorites', 'today'));
     }
 }
