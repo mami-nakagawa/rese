@@ -68,7 +68,7 @@
                             <a class="favorite_btn" shop_id="{{ $shop->id }}" favorite="1">
                                 <span class="red-heart">&#10084;</span>
                             </a>
-                            @endif
+                        @endif
                     @endforeach
                         @if($check == "off")
                             <a class="favorite_btn" shop_id="{{ $shop->id }}" favorite="0">

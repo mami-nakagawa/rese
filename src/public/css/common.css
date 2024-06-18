@@ -1,7 +1,7 @@
 .header__inner {
     display: flex;
     justify-content: space-between;
-    padding: 30px 150px 30px;
+    padding: 30px 100px 30px;
     background-color: #f6f5f5;
     position: fixed;
     width: 100%;
@@ -12,7 +12,7 @@
     text-decoration: none;
     font-weight: bold;
     color: rgb(45, 88, 229);
-    padding-left: 10px;
+    padding-left: 60px;
 }
 
 #nav-toggle {
@@ -179,6 +179,10 @@
     opacity: 1;
     transform: translateX(0);
     transition: transform 1s ease, opacity 0.9s ease;
+}
+
+.header__search {
+    width: 50%;
 }
 
 body {

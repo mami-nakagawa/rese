@@ -20,9 +20,9 @@ Route::get('/thanks', [ShopController::class, 'thanks']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ShopController::class, 'index']);
-    // Route::get('/search', [ShopController::class, 'search']);
     Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
     Route::post('/done', [ShopController::class, 'reservation']);
+    Route::patch('/reservation_update', [ShopController::class, 'reservationUpdate']);
     Route::delete('/reservation_delete', [ShopController::class, 'reservationDestroy']);
     Route::post('/favorite', [ShopController::class, 'favorite']);
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
