@@ -21,11 +21,16 @@ class Shop extends Model
 
     public function favorites()
     {
-        return $this->hasMany(Favorite::class,  'shop_id');
+        return $this->hasMany(Favorite::class, 'shop_id');
     }
 
     public function favorite_users()
     {
         return $this->belongsToMany(User::class, 'favorites', 'shop_id', 'user_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

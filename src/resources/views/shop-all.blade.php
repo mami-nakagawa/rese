@@ -57,24 +57,21 @@
                     <button class="shop-detail__btn" type="submit">詳しくみる</button>
                 </form>
                 <div class="favorite">
-                @if(Auth::user())
+                @if(!empty($favorites))
                     @foreach($favorites as $favorite)
-                        @if(in_array("$shop->id", (array)$favorite['shop_id']))
-                        <?php $check = "on"; ?>
-                        @else
-                        <?php $check = "off"; ?>
-                        @endif
-                        @if($check == "on")
+                    @if($favorite->shop_id == $shop->id)
                             <a class="favorite_btn" shop_id="{{ $shop->id }}" favorite="1">
                                 <span class="red-heart">&#10084;</span>
                             </a>
-                        @endif
+                    @endif
                     @endforeach
-                        @if($check == "off")
-                            <a class="favorite_btn" shop_id="{{ $shop->id }}" favorite="0">
-                                <span  class="gray-heart">&#10084;</span>
-                            </a>
-                        @endif
+                        <a class="favorite_btn" shop_id="{{ $shop->id }}" favorite="0">
+                            <span  class="gray-heart">&#10084;</span>
+                        </a>
+                @else
+                        <a class="favorite_btn" shop_id="{{ $shop->id }}" favorite="0">
+                            <span  class="gray-heart">&#10084;</span>
+                        </a>
                 @endif
                 </div>
             </div>

@@ -20,6 +20,7 @@ class CreateReservationsTable extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('number');
+            $table->unique(['user_id', 'shop_id', 'date', 'time']);
             $table->timestamps();
         });
     }

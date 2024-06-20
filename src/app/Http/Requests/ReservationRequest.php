@@ -29,7 +29,7 @@ class ReservationRequest extends FormRequest
         return [
             'date' => 'required',
             'time' => 'required',
-            'number' => 'required'
+            'number' => 'required',
         ];
     }
 

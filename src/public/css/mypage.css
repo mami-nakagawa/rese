@@ -1,15 +1,73 @@
-.card__flex {
+.mypage__ttl-container {
+    text-align: center;
+}
+
+.mypage__ttl {
+    font-size: 30px;
+}
+
+.mypage__content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.reservation__flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservation-container__ttl {
+    font-size: 24px;
+}
+
+.favorite-container__ttl {
+    font-size: 24px;
+    padding-left: 60px;
+}
+
+.reservation__container {
+    width: 40%;
+    padding-left: 15px;
+}
+
+.reservation__content {
+    width: 90%;
+    height: 250px;
+    background-color: rgb(45, 88, 229);
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+}
+
+.visit__content {
+    width: 90%;
+    height: 250px;
+    background-color: rgb(129, 130, 132);
+    color: #fff;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+}
+
+.favorite__container {
+    width: 60%;
+}
+
+.card__container {
+    display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
 }
 
 .card {
-    width: 24%;
+    width: 40%;
     height: 280px;
-    margin: 5px auto 20px;
+    margin: 0 0 20px 60px;
     border-radius: 5px;
     box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    background-color: #fff;
 }
 
 .card__img img {
@@ -58,4 +116,6 @@
     color: red;
     font-size: 34px;
     cursor: pointer;
+    border: none;
+    background-color: #fff;
 }

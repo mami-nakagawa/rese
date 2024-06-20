@@ -31,7 +31,7 @@
             <div class="reservation__form">
                 <div class="form__group">
                     <div class="form__input">
-                        <input id="select_date" type="date" min="{{$today}}" name="date">
+                        <input id="select_date" type="date" min="{{$tomorrow}}" name="date">
                     </div>
                     <div class="form__error__container">
                         <div class="form__error">
