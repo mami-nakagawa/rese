@@ -1,3 +1,4 @@
+/*検索*/
 .shop__search {
     width: 100%;
 }
@@ -46,6 +47,7 @@
     display: inline-block;
 }
 
+/*店舗情報*/
 .card__flex {
     display: flex;
     justify-content: flex-start;
@@ -68,15 +70,50 @@
 }
 
 .card__content {
-    padding: 0 20px;
+    padding: 10px 20px;
     height: 130px;
+}
+
+.card__content-top {
+    display: flex;
+    justify-content: space-between;
+    line-height: 0;
+    padding: 0;
 }
 
 .card__content-ttl {
     font-size: 18px;
     font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 0px;
+    line-height: 0;
+    margin-bottom: 0;
+}
+
+.card__content-review {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.review__star {
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.yellow-star {
+    color: #F8C601;
+}
+
+.gray-star {
+    color: #D2D2D2;
+}
+
+.star__avg {
+    padding-right: 5px;
+}
+
+.review__count {
+    text-decoration: none;
+    color: black;
 }
 
 .card__content-tag {

@@ -12,6 +12,27 @@
             <h2 class="shop-detail__ttl">
                 {{$shop->shop_name}}
             </h2>
+            <div class="review__star">
+                @if($star_avg >= 1 && $star_avg <= 1.4)
+                    <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
+                @elseif($star_avg >= 1.5 && $star_avg <= 2.4)
+                    <span class="yellow-star">★★</span><span class="gray-star">★★★</span>
+                @elseif($star_avg >= 2.5 && $star_avg <= 3.4)
+                    <span class="yellow-star">★★★</span><span class="gray-star">★★</span>
+                @elseif($star_avg >= 3.5 && $star_avg <= 4.4)
+                    <span class="yellow-star">★★★★</span><span class="gray-star">★</span>
+                @elseif($star_avg >= 4.5 && $star_avg <= 5)
+                    <span class="yellow-star">★★★★★</span>
+                @elseif(empty($star_avg))
+                    <span class="gray-star">★★★★★</span>
+                @endif
+            </div>
+            @if($review_count == 0)
+                <p class="review__count">(0件)</p>
+            @else
+                <p class="star__avg">{{$star_avg}}</p>
+                <a class="review__count" href="">({{$review_count}}件)</a>
+            @endif
         </div>
         <div class="shop-detail__img">
             <img src="{{$shop->image}}" alt="shop_image" />
@@ -30,22 +51,22 @@
             <div class="review__content">
                 <table class="review__table">
                     <tr>
-                        <th class="review__label">お名前</th>
+                        <th class="review__label">投稿者</th>
                         <td class="review__username">{{$review->user->name}}</td>
                     </tr>
                     <tr>
-                        <th class="review__label">満足度</th>
+                        <th class="review__label">評価点</th>
                         <td class="review__star">
                         @if($review->star == 1)
-                            <span class="yellow">★</span><span class="gray">★★★★</span>
+                            <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
                         @elseif($review->star == 2)
-                            <span class="yellow">★★</span><span class="gray">★★★</span>
+                            <span class="yellow-star">★★</span><span class="gray-star">★★★</span>
                         @elseif($review->star == 3)
-                            <span class="yellow">★★★</span><span class="gray">★★</span>
+                            <span class="yellow-star">★★★</span><span class="gray-star">★★</span>
                         @elseif($review->star == 4)
-                            <span class="yellow">★★★★</span><span class="gray">★</span>
+                            <span class="yellow-star">★★★★</span><span class="gray-star">★</span>
                         @elseif($review->star == 5)
-                            <span class="yellow">★★★★★</span>
+                            <span class="yellow-star">★★★★★</span>
                         @endif
                         </td>
                     </tr>

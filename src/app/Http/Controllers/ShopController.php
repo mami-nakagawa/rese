@@ -66,8 +66,11 @@ class ShopController extends Controller
         $shop = Shop::find($request->id);
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
         $reviews = Review::all();
+        $star_avg = Review::where('shop_id',$shop->id)->avg('star');
+        $star_avg = substr($star_avg, 0, 4);
+        $review_count = Review::where('shop_id',$shop->id)->count();
 
-        return view('shop-detail', compact('user', 'shop', 'tomorrow', 'reviews'));
+        return view('shop-detail', compact('user', 'shop', 'tomorrow', 'reviews', 'star_avg', 'review_count'));
     }
 
     public function reservationUpdate(Request $request)
@@ -151,7 +154,7 @@ class ShopController extends Controller
         $favorites = Favorite::where('user_id',$user->id)->get();
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
         $yesterday = Carbon::yesterday()->format('Y-m-d');
-        $visits = Reservation::whereDate('date','<=',$today)->where('user_id',$user->id)->get();
+        $visits = Reservation::where('user_id',$user->id)->whereDate('date','<=',$today)->get();
 
         return view('mypage', compact('user', 'reservations', 'favorites', 'tomorrow', 'visits', 'today', 'now'));
     }
