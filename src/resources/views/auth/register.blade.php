@@ -7,14 +7,14 @@
 @section('content')
 <div class="card">
   <div class="card__heading">
-    <h2>Registration</h2>
+    <p>Registration</p>
   </div>
   <div class="card__content">
     <form class="form" action="/register" method="post">
       @csrf
       <div class="form__group">
-          <div class="form__input">
-            <input type="text" name="name" placeholder="Username" value="{{ old('name') }}" />
+          <div class="form__input-username">
+            <input class="input__username" type="text" name="name" placeholder="Username" value="{{ old('name') }}" />
           </div>
           <div class="form__error__container">
             <div class="form__error">
@@ -25,8 +25,8 @@
           </div>
       </div>
       <div class="form__group">
-          <div class="form__input">
-            <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" />
+          <div class="form__input-email">
+            <input class="input__email" type="email" name="email" placeholder="Email" value="{{ old('email') }}" />
           </div>
           <div class="form__error__container">
             <div class="form__error">
@@ -37,8 +37,8 @@
           </div>
       </div>
       <div class="form__group">
-          <div class="form__input">
-            <input type="password" name="password" placeholder="Password" />
+          <div class="form__input-password">
+            <input class="input__password" type="password" name="password" placeholder="Password" />
           </div>
           <div class="form__error__container">
             <div class="form__error">

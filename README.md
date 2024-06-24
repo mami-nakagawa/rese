@@ -1,6 +1,6 @@
 # Rese(飲食店予約サービス)
 
-<img width="730" alt="テーブル" src="トップ画面.png">
+<img width="730" alt="テーブル" src="src/public/img/トップ画面.png">
 
 ## 作成した目的
 
@@ -30,13 +30,13 @@
 
 ## テーブル設計
 
-<img width="730" alt="テーブル" src="usersテーブル.png"><br>
-<img width="730" alt="テーブル" src="stampsテーブル.png"><br>
-<img width="730" alt="テーブル" src="restsテーブル.png">
+<img width="730" alt="テーブル" src="src/public/img/"><br>
+<img width="730" alt="テーブル" src="src/public/img/"><br>
+<img width="730" alt="テーブル" src="src/public/img/">
 
 ## ER 図
 
-<img width="730" alt="ER図" src="erd.png">
+<img width="730" alt="ER図" src="src/public/img/erd.png">
 
 # 環境構築
 

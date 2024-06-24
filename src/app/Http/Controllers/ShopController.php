@@ -6,9 +6,11 @@ use App\Models\User;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Favorite;
+use App\Models\Review;
 use Auth;
 use Carbon\Carbon;
 use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\ReviewRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -45,10 +47,8 @@ class ShopController extends Controller
 
         $shops = $query->get();
         $user = Auth::user();
-        $favorites = Favorite::where('user_id',$user->id)->get();
 
-
-        return view('shop-all', compact('user', 'favorites', 'shops', 'area'));
+        return view('shop-all', compact('user', 'shops'));
     }
 
     public function search(Request $request)
@@ -65,8 +65,9 @@ class ShopController extends Controller
         $user = Auth::user();
         $shop = Shop::find($request->id);
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
+        $reviews = Review::all();
 
-        return view('shop-detail', compact('user', 'shop', 'tomorrow'));
+        return view('shop-detail', compact('user', 'shop', 'tomorrow', 'reviews'));
     }
 
     public function reservationUpdate(Request $request)
@@ -104,7 +105,7 @@ class ShopController extends Controller
         return redirect()->back();
     }
 
-    public function favorites(Request $request)
+    public function favorite(Request $request)
     {
         $user = Auth::user();
 
@@ -116,7 +117,7 @@ class ShopController extends Controller
         return redirect()->back();
     }
 
-    public function favorite(Request $request)
+    public function favorites(Request $request)
     {
         if ( $request->input('favorite') == 0) {
             //ステータスが0のときはデータベースに情報を保存
@@ -150,8 +151,22 @@ class ShopController extends Controller
         $favorites = Favorite::where('user_id',$user->id)->get();
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
         $yesterday = Carbon::yesterday()->format('Y-m-d');
-        $visits = Reservation::whereDate('date','<=',$today)->get();
+        $visits = Reservation::whereDate('date','<=',$today)->where('user_id',$user->id)->get();
 
         return view('mypage', compact('user', 'reservations', 'favorites', 'tomorrow', 'visits', 'today', 'now'));
+    }
+
+    public function review(ReviewRequest $request)
+    {
+        Review::create(
+            $request->only([
+                'user_id',
+                'shop_id',
+                'star',
+                'comment',
+            ])
+        );
+
+        return redirect()->back();
     }
 }

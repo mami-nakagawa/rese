@@ -27,4 +27,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/favorite', [ShopController::class, 'favorite']);
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
+    Route::post('/review', [ShopController::class, 'review']);
 });

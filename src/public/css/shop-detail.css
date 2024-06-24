@@ -1,0 +1,99 @@
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px auto;
+}
+
+/*店舗詳細*/
+.shop-detail{
+    width: 45%;
+    margin-right: 5%;
+}
+
+.shop-detail__flex {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.home__link {
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    padding: 5px 8px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    border-radius: 5px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.shop-detail__ttl {
+    line-height: 0;
+    padding-left: 13px;
+    margin: 0;
+    font-size: 28px;
+}
+
+.shop-detail__img img{
+    width: 100%;
+}
+
+.shop-detail__tag {
+    display: flex;
+    justify-content: left;
+}
+
+.tag__item--last {
+    padding-left: 5px;
+}
+
+/*レビュー*/
+.review__ttl {
+    font-size: 18px;
+}
+
+.review__content {
+    margin-bottom: 20px;
+}
+
+.review__label {
+    text-align: left;
+}
+
+.review__star {
+    font-size: 24px;
+    padding: 0 5px;
+}
+
+.yellow {
+    color: #F8C601;
+}
+
+.gray {
+    color: #D2D2D2;
+}
+
+/*予約*/
+.reservation{
+    width: 45%;
+    margin-left: 5%;
+    background-color: rgb(55, 96, 231);
+    color: #fff;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    border-radius: 5px;
+}
+
+.reservation__ttl {
+    font-size: 24px;
+}
+
+.form__button-submit {
+    background-color: rgb(7, 60, 234);
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}

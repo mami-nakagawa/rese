@@ -36,6 +36,16 @@
     display: none;
 }
 
+.search-form__input@::before {
+    content: "";
+    background: url(../img/search.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
 .card__flex {
     display: flex;
     justify-content: flex-start;
@@ -72,6 +82,7 @@
 .card__content-tag {
     font-size: 12px;
     line-height: 0;
+    margin-bottom: 10px;
 }
 
 .card__content-tag-item {
@@ -94,13 +105,23 @@
 }
 
 .red-heart {
-    color: red;
-    font-size: 36px;
+    conent: '';
+    background: url(../img/red-heart.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 33px;
+    height: 33px;
+    border: none;
     cursor: pointer;
 }
 
 .gray-heart {
-    color: rgb(196, 196, 196);
-    font-size: 36px;
+    content: '';
+    background: url(../img/gray-heart.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 33px;
+    height: 33px;
+    border: none;
     cursor: pointer;
 }

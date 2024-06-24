@@ -24,80 +24,114 @@
                     @method('DELETE')
                     @csrf
                         <input class="reservation__delete-input" type="hidden" name="id" value="{{$reservation->id}}">
-                        <button class="reservation__delete-btn" type="submit">×</button>
+                        <button class="reservation__delete-btn" type="submit"></button>
                     </form>
                 </div>
             </div>
             <div class="reservation__content-table">
-                <form class="reservation__update-form" action="/reservation_update" method="POST">
-                @method('PATCH')
-                @csrf
-                    <table class="reservation__table">
-                        <tr class="reservation__row">
-                            <th class="reservation__label">Shop</th>
-                            <td class="reservation__data">{{ $reservation->shop->shop_name }}</td>
-                        </tr>
-                        <tr class="reservation__row">
-                            <th class="reservation__label">Date</th>
-                            <td class="reservation__data">
-                                <input class="reservation__update-input" type="date" min="{{$tomorrow}}" name="date" value="{{ $reservation->date }}">
-                            </td>
-                            <div class="form__error__container">
-                                <div class="form__error">
-                                    @error('date')
-                                    {{ $message }}
-                                    @enderror
+                <table class="reservation__table">
+                    <tr class="reservation__row">
+                        <th class="reservation__label">Shop</th>
+                        <td class="reservation__data">{{ $reservation->shop->shop_name }}</td>
+                    </tr>
+                    <tr class="reservation__row">
+                        <th class="reservation__label">Date</th>
+                        <td class="reservation__data">{{ $reservation->date }}</td>
+                    </tr>
+                    <tr class="reservation__row">
+                        <th class="reservation__label">Time</th>
+                        <td class="reservation-form__data">{{ substr($reservation->time, 0, 5) }}</td>
+                    </tr>
+                    <tr class="reservation-form__row">
+                        <th class="reservation__label">Number</th>
+                        <td class="reservation-form__data">{{ $reservation->number }}</td>
+                    </tr>
+                </table>
+            </div>
+            <a class="reservation-update__btn" href="#{{$reservation->id}}">予約を変更する</a>
+
+            <!--予約変更モーダル-->
+            <div class="modal" id="{{$reservation->id}}">
+                <a href="#!" class="modal-overlay"></a>
+                <div class="modal__inner">
+                    <div class="modal__content">
+                        <div class="modal__ttl">
+                            <h4>予約の変更</h4>
+                        </div>
+                        <div class="modal-reservation__content-table">
+                            <form class="modal-reservation__update-form" action="/reservation_update" method="POST">
+                            @method('PATCH')
+                            @csrf
+                                <table class="modal-reservation__table">
+                                    <tr class="modal-reservation__row">
+                                        <th class="modal-reservation__label">Shop</th>
+                                        <td class="modal-reservation__data">{{ $reservation->shop->shop_name }}</td>
+                                    </tr>
+                                    <tr class="modal-reservation__row">
+                                        <th class="modal-reservation__label">Date</th>
+                                        <td class="modal-reservation__data">
+                                            <input class="modal-reservation__update-input" type="date" name="date" value="{{ $reservation->date }}">
+                                        </td>
+                                        <div class="form__error__container">
+                                            <div class="form__error">
+                                                @error('date')
+                                                {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    <tr class="modal-reservation__row">
+                                        <th class="modal-reservation__label">Time</th>
+                                        <td class="modal-reservation__data">
+                                            <select id="select_time" name="time">
+                                                <option selected>{{ substr($reservation->time, 0, 5) }}</option>
+                                                <option value="17:00">17:00</option>
+                                                <option value="17:30">17:30</option>
+                                                <option value="18:00">18:00</option>
+                                                <option value="18:30">18:30</option>
+                                                <option value="19:00">19:00</option>
+                                                <option value="19:30">19:30</option>
+                                                <option value="20:00">20:00</option>
+                                            </select>
+                                        </td>
+                                        <div class="form__error__container">
+                                            <div class="form__error">
+                                                @error('time')
+                                                {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    <tr class="modal-reservation__row">
+                                        <th class="modal-reservation__label">Number</th>
+                                        <td class="modal-reservation__data">
+                                            <select id="select_number" name="number">
+                                                <option selected>{{ $reservation->number }}</option>
+                                                <option value="1人">1人</option>
+                                                <option value="2人">2人</option>
+                                                <option value="3人">3人</option>
+                                                <option value="4人">4人</option>
+                                                <option value="5人">5人</option>
+                                            </select>
+                                        </td>
+                                        <div class="form__error__container">
+                                            <div class="form__error">
+                                                @error('number')
+                                                {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </tr>
+                                </table>
+                                <div class="modal-form__button">
+                                    <input type="hidden" name="id" value="{{ $reservation->id }}">
+                                    <button class="modal-form__button-submit" type="submit">変更する</button>
                                 </div>
-                            </div>
-                        </tr>
-                        <tr class="reservation__row">
-                            <th class="reservation__label">Time</th>
-                            <td class="reservation-form__data">
-                                <select id="select_time" name="time">
-                                    <option selected>{{ substr($reservation->time, 0, 5) }}</option>
-                                    <option value="17:00">17:00</option>
-                                    <option value="17:30">17:30</option>
-                                    <option value="18:00">18:00</option>
-                                    <option value="18:30">18:30</option>
-                                    <option value="19:00">19:00</option>
-                                    <option value="19:30">19:30</option>
-                                    <option value="20:00">20:00</option>
-                                </select>
-                            </td>
-                            <div class="form__error__container">
-                                <div class="form__error">
-                                    @error('time')
-                                    {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                        </tr>
-                        <tr class="reservation-form__row">
-                            <th class="reservation__label">Number</th>
-                            <td class="reservation-form__data">
-                                <select id="select_number" name="number">
-                                    <option selected>{{ $reservation->number }}</option>
-                                    <option value="1人">1人</option>
-                                    <option value="2人">2人</option>
-                                    <option value="3人">3人</option>
-                                    <option value="4人">4人</option>
-                                    <option value="5人">5人</option>
-                                </select>
-                            </td>
-                            <div class="form__error__container">
-                                <div class="form__error">
-                                    @error('number')
-                                    {{ $message }}
-                                    @enderror
-                                </div>
-                            </div>
-                        </tr>
-                    </table>
-                    <div class="update-form__button">
-                        <input type="hidden" name="id" value="{{ $reservation->id }}">
-                        <button class="update-form__button-submit" type="submit">変更する</button>
+                            </form>
+                        </div>
                     </div>
-                </form>
+                    <a href="#" class="modal__close-btn">×</a>
+                </div>
             </div>
         </div>
         @endif
@@ -105,45 +139,96 @@
         @foreach($visits as $visit)
         @if((($visit->date==$today) && ($visit->time<=$now)) || ($visit->date<$today))
         <div class="visit__content">
-            <div class="reservation__content-ttl">
+            <div class="visit__content-ttl">
                 <h4>来店済み</h4>
             </div>
             <div class="reservation__content-table">
-                <form class="reservation__update-form" action="/reservation_update" method="POST">
-                @csrf
-                    <table class="reservation__table">
-                        <tr class="reservation__row">
-                            <th class="reservation__label">Shop</th>
-                            <td class="reservation__data">{{ $visit->shop->shop_name }}</td>
-                        </tr>
-                        <tr class="reservation__row">
-                            <th class="reservation__label">Date</th>
-                            <td class="reservation__data">{{ $visit->date }}</td>
-                        </tr>
-                        <tr class="reservation__row">
-                            <th class="reservation__label">Time</th>
-                            <td class="reservation-form__data">{{ substr($visit->time, 0, 5) }}</td>
-                        </tr>
-                        <tr class="reservation-form__row">
-                            <th class="reservation__label">Number</th>
-                            <td class="reservation-form__data">{{ $visit->number }}</td>
-                        </tr>
-                    </table>
-                    <div class="review-ttl">
-                        <h4>お店のレビュー</h4>
-                    </div>
-                    <div class="update-form__button">
-                        <form class="reservation__update-form" action="/reservation_update" method="POST">
+                <table class="reservation__table">
+                    <tr class="reservation__row">
+                        <th class="reservation__label">Shop</th>
+                        <td class="reservation__data">{{ $visit->shop->shop_name }}</td>
+                    </tr>
+                    <tr class="reservation__row">
+                        <th class="reservation__label">Date</th>
+                        <td class="reservation__data">{{ $visit->date }}</td>
+                    </tr>
+                    <tr class="reservation__row">
+                        <th class="reservation__label">Time</th>
+                        <td class="reservation-form__data">{{ substr($visit->time, 0, 5) }}</td>
+                    </tr>
+                    <tr class="reservation-form__row">
+                        <th class="reservation__label">Number</th>
+                        <td class="reservation-form__data">{{ $visit->number }}</td>
+                    </tr>
+                </table>
+            </div>
+            <?php $review = App\Models\Review::where('user_id',$user->id)->where('shop_id',$visit->shop->id)->first();?>
+            @if(empty($review))
+            <a class="review__btn" href="#{{$visit->id}}">レビューを投稿する</a>
+            @else
+            <a></a>
+            @endif
+
+            <!--レビューモーダル-->
+            <div class="modal" id="{{$visit->id}}">
+                <a href="#!" class="modal-overlay"></a>
+                <div class="modal__inner">
+                    <div class="modal__content">
+                        <div class="modal__ttl">
+                            <h4>お店のレビュー</h4>
+                        </div>
+                        <form class="review-form__form" action="/review" method="POST">
                         @csrf
-                            <input type="text" name="comment" value="{{ old('comment') }}" placeholder="コメント">
+                            <table class="modal-review__table">
+                                <tr class="modal-review__row">
+                                    <th class="modal-review__label">満足度</th>
+                                    <td>
+                                        <div class="stars">
+                                            <span>
+                                                <input type="radio" name="star" value="5" id="star1">
+                                                    <label for="star1">★</label>
+                                                <input type="radio" name="star" value="4" id="star2">
+                                                    <label for="star2">★</label>
+                                                <input type="radio" name="star" value="3" id="star3">
+                                                    <label for="star3">★</label>
+                                                <input type="radio" name="star" value="3" id="star4">
+                                                    <label for="star4">★</label>
+                                                <input type="radio" name="star" value="1" id="star5">
+                                                    <label for="star5">★</label>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <div class="form__error__container">
+                                    <div class="form__error">
+                                        @error('star')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                                <tr class="modal-review__row">
+                                    <th class="modal-review__label">コメント</th>
+                                    <td>
+                                        <textarea name="comment" cols="30" rows="3" value="{{ old('comment') }}" placeholder="10文字以上入力してください"></textarea>
+                                    </td>
+                                </tr>
+                                <div class="form__error__container">
+                                    <div class="form__error">
+                                        @error('comment')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </table>
+                            <div class="modal-form__button">
+                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                <input type="hidden" name="shop_id" value="{{ $visit->shop->id }}">
+                                <button class="modal-form__button-submit" type="submit">投稿する</button>
+                            </div>
                         </form>
                     </div>
-                    <div class="review-form__button">
-                        <input type="hidden" name="id" value="{{ $user->id }}">
-                        <input type="hidden" name="id" value="{{ $visit->shop->id }}">
-                        <button class="review-form__button-submit" type="submit">レビューを投稿する</button>
-                    </div>
-                </form>
+                    <a href="#" class="modal__close-btn">×</a>
+                </div>
             </div>
         </div>
     @endif
@@ -178,7 +263,7 @@
                             @method('DELETE')
                             @csrf
                             <input type="hidden" name="shop_id" value="{{ $favorite->shop->id }}">
-                            <button class="favorite__btn" type="submit">&#x2764</button>
+                            <button class="favorite__btn" type="submit"></button>
                         </form>
                     </div>
                 </div>

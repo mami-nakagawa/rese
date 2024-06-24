@@ -7,25 +7,60 @@
 @section('content')
 <div class="content">
     <div class="shop-detail">
-        <a class="home__link" href="/"><</a>
-        <h2 class="shop-detail-ttl">
-            {{$shop->shop_name}}
-        </h2>
+        <div class="shop-detail__flex">
+            <a class="home__link" href="/">＜</a>
+            <h2 class="shop-detail__ttl">
+                {{$shop->shop_name}}
+            </h2>
+        </div>
         <div class="shop-detail__img">
             <img src="{{$shop->image}}" alt="shop_image" />
         </div>
-        <div class="shop-detail-tag">
-            <p class="card__content-tag-item">#{{$shop->area}}</p>
-            <p class="card__content-tag-item card__content-tag-item--last">
-                #{{$shop->genre}}
-            </p>
+        <div class="shop-detail__tag">
+            <p class="tag__item">#{{$shop->area}}</p>
+            <p class="tag__item--last">#{{$shop->genre}}</p>
         </div>
-        <div class="shop-detail-text">
-            <p class="card__content-tag-item">{{$shop->detail}}</p>
+        <div class="shop-detail__text">
+            <p class="detail__text">{{$shop->detail}}</p>
+        </div>
+        <div class="review">
+            <h4 class="review__ttl">お店のレビュー</h4>
+            @foreach($reviews as $review)
+            @if($review->shop_id == $shop->id)
+            <div class="review__content">
+                <table class="review__table">
+                    <tr>
+                        <th class="review__label">お名前</th>
+                        <td class="review__username">{{$review->user->name}}</td>
+                    </tr>
+                    <tr>
+                        <th class="review__label">満足度</th>
+                        <td class="review__star">
+                        @if($review->star == 1)
+                            <span class="yellow">★</span><span class="gray">★★★★</span>
+                        @elseif($review->star == 2)
+                            <span class="yellow">★★</span><span class="gray">★★★</span>
+                        @elseif($review->star == 3)
+                            <span class="yellow">★★★</span><span class="gray">★★</span>
+                        @elseif($review->star == 4)
+                            <span class="yellow">★★★★</span><span class="gray">★</span>
+                        @elseif($review->star == 5)
+                            <span class="yellow">★★★★★</span>
+                        @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="review__label">コメント</th>
+                        <td class="review__comment">{{$review->comment}}</td>
+                    </tr>
+                </table>
+            </div>
+            @endif
+            @endforeach
         </div>
     </div>
     <div class="reservation">
-        <h2 class="reservation-ttl">予約</h2>
+        <h2 class="reservation__ttl">予約</h2>
         <form action="/done" method="post">
             @csrf
             <div class="reservation__form">
