@@ -152,14 +152,75 @@
 .review__star {
     font-size: 16px;
     padding-right: 5px;
+    margin: 0 auto;
 }
 
-.yellow-star {
+.star {
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 16px;
+    font-size: 16px;
+}
+
+.star::before, .star::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+}
+
+.star::before {
+    color: #ddd;
+}
+
+.star::after {
     color: #F8C601;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.gray-star {
-    color: #D2D2D2;
+.star0::after {
+    width: 0;
+}
+
+.star1::after {
+    width: 16px;
+}
+
+.star1-5::after {
+    width: 24px;
+}
+
+.star2::after {
+    width: 32px;
+}
+
+.star2-5::after {
+    width: 40px;
+}
+
+.star3::after {
+    width: 48px;
+}
+
+.star3-5::after {
+    width: 56px;
+}
+
+.star4::after {
+    width: 64px;
+}
+
+.star4-5::after {
+    width: 72px;
+}
+
+.star5::after {
+    width: 80px;
 }
 
 .star__avg {

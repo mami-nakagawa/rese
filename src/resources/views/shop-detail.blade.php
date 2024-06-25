@@ -13,18 +13,26 @@
                 {{$shop->shop_name}}
             </h2>
             <div class="review__star">
-                @if($star_avg >= 1 && $star_avg <= 1.4)
-                    <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
-                @elseif($star_avg >= 1.5 && $star_avg <= 2.4)
-                    <span class="yellow-star">★★</span><span class="gray-star">★★★</span>
-                @elseif($star_avg >= 2.5 && $star_avg <= 3.4)
-                    <span class="yellow-star">★★★</span><span class="gray-star">★★</span>
-                @elseif($star_avg >= 3.5 && $star_avg <= 4.4)
-                    <span class="yellow-star">★★★★</span><span class="gray-star">★</span>
-                @elseif($star_avg >= 4.5 && $star_avg <= 5)
-                    <span class="yellow-star">★★★★★</span>
-                @elseif(empty($star_avg))
-                    <span class="gray-star">★★★★★</span>
+                @if(empty($star_avg))
+                    <span class="star star0"></span>
+                @elseif($star_avg >= 1 && $star_avg <= 1.4)
+                    <span class="star star1"></span>
+                @elseif($star_avg >= 1.5 && $star_avg < 2)
+                    <span class="star star1-5"></span>
+                @elseif($star_avg >= 2 && $star_avg <= 2.4)
+                    <span class="star star2"></span>
+                @elseif($star_avg >= 2.5 && $star_avg < 3)
+                    <span class="star star2-5"></span>
+                @elseif($star_avg >= 3 && $star_avg <= 3.4)
+                    <span class="star star3"></span>
+                @elseif($star_avg >= 3.5 && $star_avg < 4)
+                    <span class="star star3-5"></span>
+                @elseif($star_avg >= 4 && $star_avg <= 4.4)
+                    <span class="star star4"></span>
+                @elseif($star_avg >= 4.5 && $star_avg < 5)
+                    <span class="star star4-5"></span>
+                @elseif($star_avg == 5)
+                    <span class="star star5"></span>
                 @endif
             </div>
             @if($review_count == 0)
