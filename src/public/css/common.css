@@ -5,6 +5,7 @@
     background-color: #f6f5f5;
     position: fixed;
     width: 100%;
+    z-index: 950;
 }
 
 .header__logo {
@@ -21,6 +22,7 @@
     left: 100px;
     height: 40px;
     cursor: pointer;
+    z-index: 1000;
 }
 
 #nav-toggle>div {
@@ -75,7 +77,6 @@
 }
 
 #nav-toggle {
-    z-index: 1000;
     background-color: rgb(45, 88, 229);
     border-radius: 5px;
     box-shadow: 3px 3px 3px rgb(164, 163, 163);

@@ -39,7 +39,7 @@
                 <p class="review__count">(0件)</p>
             @else
                 <p class="star__avg">{{$star_avg}}</p>
-                <a class="review__count" href="">({{$review_count}}件)</a>
+                <a class="review__count" href="#{{$shop->id}}">({{$review_count}}件)</a>
             @endif
         </div>
         <div class="shop-detail__img">
@@ -52,43 +52,54 @@
         <div class="shop-detail__text">
             <p class="detail__text">{{$shop->detail}}</p>
         </div>
-        <div class="review">
-            <h4 class="review__ttl">お店のレビュー</h4>
-            @foreach($reviews as $review)
-            @if($review->shop_id == $shop->id)
-            <div class="review__content">
-                <table class="review__table">
-                    <tr>
-                        <th class="review__label">投稿者</th>
-                        <td class="review__username">{{$review->user->name}}</td>
-                    </tr>
-                    <tr>
-                        <th class="review__label">評価点</th>
-                        <td class="review__star">
-                        @if($review->star == 1)
-                            <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
-                        @elseif($review->star == 2)
-                            <span class="yellow-star">★★</span><span class="gray-star">★★★</span>
-                        @elseif($review->star == 3)
-                            <span class="yellow-star">★★★</span><span class="gray-star">★★</span>
-                        @elseif($review->star == 4)
-                            <span class="yellow-star">★★★★</span><span class="gray-star">★</span>
-                        @elseif($review->star == 5)
-                            <span class="yellow-star">★★★★★</span>
-                        @endif
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="review__label">コメント</th>
-                        <td class="review__comment">{{$review->comment}}</td>
-                    </tr>
-                </table>
+
+        <!--レビュ一覧ーモーダル-->
+        <div class="modal" id="{{$shop->id}}">
+            <a href="#!" class="modal-overlay"></a>
+            <div class="modal__inner">
+                <div class="modal-review__content">
+                    <h4 class="modal__ttl">お店のレビュー</h4>
+                    @foreach($reviews as $review)
+                    @if($review->shop_id == $shop->id)
+                    <div class="review__content">
+                        <table class="modal-review-all__table">
+                            <tr class="modal-review-all__row">
+                                <th class="modal-review__label">投稿者</th>
+                                <td class="modal-review__data">{{$review->user->name}}</td>
+                            </tr>
+                            <tr class="modal-review-all__row">
+                                <th class="modal-review__label">評価点</th>
+                                <td class="modal-review__data">
+                                    <div class="review__star">
+                                    @if($review->star == 1)
+                                        <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
+                                    @elseif($review->star == 2)
+                                        <span class="yellow-star">★★</span><span class="gray-star">★★★</span>
+                                    @elseif($review->star == 3)
+                                        <span class="yellow-star">★★★</span><span class="gray-star">★★</span>
+                                    @elseif($review->star == 4)
+                                        <span class="yellow-star">★★★★</span><span class="gray-star">★</span>
+                                    @elseif($review->star == 5)
+                                        <span class="yellow-star">★★★★★</span>
+                                    @endif
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="modal-review-all__row">
+                                <th class="modal-review__label">コメント</th>
+                                <td class="modal-review__data">{{$review->comment}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    @endif
+                    @endforeach
+                </div>
+                <a href="#" class="modal__close-btn">×</a>
             </div>
-            @endif
-            @endforeach
         </div>
     </div>
     <div class="reservation">
+        <div class="reservation__content">
         <h2 class="reservation__ttl">予約</h2>
         <form action="/done" method="post">
             @csrf
@@ -158,18 +169,19 @@
                     </tr>
                     <tr class="confirm__row">
                         <th class="confirm__label">Time</th>
-                        <td class="confirm-form__data"><div id="selectValueTime"></div></td>
+                        <td class="confirm__data"><div id="selectValueTime"></div></td>
                     </tr>
                     <tr class="confirm-form__row">
                         <th class="confirm__label">Number</th>
-                        <td class="confirm-form__data"><div id="selectValueNumber"></div></td>
+                        <td class="confirm__data"><div id="selectValueNumber"></div></td>
                     </tr>
                 </table>
-                <div class="form__button">
-                    <input id="select_date" type="hidden" name="user_id" value="{{ $user->id }}">
-                    <input id="select_date" type="hidden" name="shop_id" value="{{ $shop->id }}">
-                    <button class="form__button-submit" type="submit">予約する</button>
-                </div>
+            </div>
+            </div>
+            <div class="form__button">
+                <input id="select_date" type="hidden" name="user_id" value="{{ $user->id }}">
+                <input id="select_date" type="hidden" name="shop_id" value="{{ $shop->id }}">
+                <button class="form__button-submit" type="submit">予約する</button>
             </div>
         </form>
     </div>

@@ -1,5 +1,6 @@
 .mypage__ttl-container {
     text-align: center;
+    line-height: 0;
 }
 
 .mypage__ttl {
@@ -12,7 +13,7 @@
     width: 100%;
 }
 
-/* 予約済み */
+/* 予約済み, 来店済み */
 .reservation__flex {
     display: flex;
     justify-content: space-between;
@@ -34,6 +35,10 @@
     margin-bottom: 5px;
 }
 
+.reservation__content-ttl h4, .visit__content-ttl h4 {
+    font-weight: 400;
+}
+
 .reservation__container {
     width: 40%;
     padding-left: 15px;
@@ -41,7 +46,7 @@
 
 .reservation__content {
     width: 90%;
-    height: 250px;
+    height: auto;
     background-color: rgb(45, 88, 229);
     color: #fff;
     margin-bottom: 20px;
@@ -50,12 +55,17 @@
     padding: 10px 30px;
 }
 
+.reservation-update, .review {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
 .reservation-update__btn {
     background-color: #fff;
     color: rgb(45, 88, 229);
-    border-radius: 3px;
+    border-radius: 5px;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-size: 14px;
     font-weight: bold;
 }
@@ -72,7 +82,26 @@
     cursor: pointer;
 }
 
-/* 来店済み */
+.reservation__table {
+    width: 100%;
+}
+
+.reservation__row {
+    line-height: 40px;
+}
+
+.reservation__label {
+    text-align: left;
+    font-weight: 400;
+    width: 20%;
+}
+
+.reservation__data {
+    text-align: left;
+    padding-left: 30px;
+    width: 80%;
+}
+
 .visit__content {
     width: 90%;
     height: auto;
@@ -81,14 +110,15 @@
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    padding: 10px 30px;
 }
 
 .review__btn {
     background-color: #fff;
     color: rgb(129, 130, 132);
-    border-radius: 3px;
+    border-radius: 5px;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 8px 15px;
     font-size: 14px;
     font-weight: bold;
 }
@@ -267,7 +297,7 @@
     cursor: pointer;
 }
 
-/* 予約変更・レビューモーダル */
+/* 予約変更・レビュー投稿・レビュー一覧モーダル */
 .modal {
     position: fixed;
     top: 0;
@@ -276,6 +306,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
+    z-index: 990;
 }
 
 .modal:target {
@@ -297,6 +328,7 @@
     top: 50%;
     left: 50%;
     width: 50%;
+    height: 90%;
     border: 1px solid rgb(164, 163, 163);
     background-color: #fff;
     box-shadow: 4px 4px 4px rgba(139, 121, 105, 0.25);
@@ -304,32 +336,145 @@
     border-radius: 5px;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .modal__ttl {
     color: black;
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 
 .modal__content {
     position: relative;
     padding: 64px 64px;
+    margin-top: 50px;
 }
 
-.modal-reservation__label, .modal-review__label {
+.modal-reservation__table {
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.modal-reservation__row {
+    line-height: 50px;
+}
+
+.modal-reservation__label {
+    text-align: left;
     color: black;
 }
 
-.modal-reservation__data {
+.modal-reservation__data, .modal-reservation__data-select {
+    text-align: left;
+    padding-left: 40px;
     color: black;
+}
+
+.modal-reservation__update-input {
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 95%;
+    border: 1px solid;
+}
+
+.modal-reservation__data-select {
+    position: relative;
+}
+
+#select_date {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    width: 35%;
+}
+
+#select_time, #select_number {
+    border-radius: 5px;
+    padding: 8px 9px;
+    width: 95%;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.modal-reservation__data-select::after {
+    content: "";
+    background: url(../img/arrow.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 35%;
+    left: 85%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transform: rotate(90deg);
+}
+
+.modal-review__table {
+    margin: 0 auto;
+}
+
+.modal-review-all__table {
+    text-align: left;
+}
+
+.modal-review__row {
+    line-height: 60px;
+}
+
+.modal-review-all__row {
+    line-height: 30px;
+}
+
+.modal-review__label {
+    text-align: left;
+    color: black;
+}
+
+.modal-review__data {
+    text-align: left;
+    padding-left: 40px;
+    color: black;
+}
+
+.modal-review__content {
+    position: relative;
+    padding: 64px 20%;
+}
+
+.review__content {
+    margin-top: 30px;
+}
+
+.review__label {
+    text-align: left;
+}
+
+.review__star {
+    font-size: 18px;
+}
+
+.yellow-star {
+    color: #F8C601;
+}
+
+.gray-star {
+    color: #D2D2D2;
 }
 
 .modal-form__button-submit {
-    margin: 64px auto 0;
     background-color: rgb(45, 88, 229);
     color: #FFF;
-    border-radius: 3px;
+    border-radius: 5px;
     border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
+    margin-top: 40px;
 }
 
 .modal__close-btn {

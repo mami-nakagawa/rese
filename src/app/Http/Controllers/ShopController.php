@@ -47,8 +47,9 @@ class ShopController extends Controller
 
         $shops = $query->get();
         $user = Auth::user();
+        $reviews = Review::all();
 
-        return view('shop-all', compact('user', 'shops'));
+        return view('shop-all', compact('user', 'shops', 'reviews'));
     }
 
     public function search(Request $request)
@@ -155,8 +156,9 @@ class ShopController extends Controller
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
         $yesterday = Carbon::yesterday()->format('Y-m-d');
         $visits = Reservation::where('user_id',$user->id)->whereDate('date','<=',$today)->get();
+        $reviews = Review::all();
 
-        return view('mypage', compact('user', 'reservations', 'favorites', 'tomorrow', 'visits', 'today', 'now'));
+        return view('mypage', compact('user', 'reservations', 'favorites', 'tomorrow', 'visits', 'today', 'now', 'reviews'));
     }
 
     public function review(ReviewRequest $request)

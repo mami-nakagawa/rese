@@ -16,9 +16,38 @@
 </head>
 
 <body>
+    <div id="gloval-nav">
+        <nav>
+            <ul class="nav__list">
+                @if (Auth::check())
+                <li class="nav__item">
+                    <a class="nav__link" href="/">Home</a>
+                </li>
+                <li class="nav__item">
+                    <form class="form" action="/logout" method="post">
+                        @csrf
+                            <input class="nav__logout" type="submit" value="Logout">
+                    </form>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="/mypage">Mypage</a>
+                </li>
+                @else
+                <li class="nav__item">
+                    <a class="nav__link" href="/">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__logout" href="/register">Registration</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="/login">Login</a>
+                </li>
+                @endif
+            </ul>
+        </nav>
+    </div>
     <header class="header">
-        <div class="header__inner">
-            <div class="header-utilities">
+
                 <div id="nav-toggle">
                     <div>
                         <span></span>
@@ -26,45 +55,15 @@
                         <span></span>
                     </div>
                 </div>
-
-                <div id="gloval-nav">
-                    <nav>
-                        <ul class="nav__list">
-                            @if (Auth::check())
-                            <li class="nav__item">
-                                <a class="nav__link" href="/">Home</a>
-                            </li>
-                            <li class="nav__item">
-                                <form class="form" action="/logout" method="post">
-                                    @csrf
-                                        <input class="nav__logout" type="submit" value="Logout">
-                                </form>
-                            </li>
-                            <li class="nav__item">
-                                <a class="nav__link" href="/mypage">Mypage</a>
-                            </li>
-                            @else
-                            <li class="nav__item">
-                                <a class="nav__link" href="/">Home</a>
-                            </li>
-                            <li class="nav__item">
-                                <a class="nav__logout" href="/register">Registration</a>
-                            </li>
-                            <li class="nav__item">
-                                <a class="nav__link" href="/login">Login</a>
-                            </li>
-                            @endif
-                        </ul>
-                    </nav>
-                </div>
+            <div class="header__inner">
                 <a class="header__logo" href="/">
                     Rese
                 </a>
-            </div>
+
             <div class="header__search">
             @yield('shop_search')
             </div>
-        </div>
+            </div>
     </header>
     <main>
         <div id="container">

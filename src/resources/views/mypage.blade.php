@@ -40,16 +40,17 @@
                     </tr>
                     <tr class="reservation__row">
                         <th class="reservation__label">Time</th>
-                        <td class="reservation-form__data">{{ substr($reservation->time, 0, 5) }}</td>
+                        <td class="reservation__data">{{ substr($reservation->time, 0, 5) }}</td>
                     </tr>
-                    <tr class="reservation-form__row">
+                    <tr class="reservation__row">
                         <th class="reservation__label">Number</th>
-                        <td class="reservation-form__data">{{ $reservation->number }}</td>
+                        <td class="reservation__data">{{ $reservation->number }}</td>
                     </tr>
                 </table>
             </div>
-            <a class="reservation-update__btn" href="#{{$reservation->id}}">予約を変更する</a>
-
+            <div class="reservation-update">
+                <a class="reservation-update__btn" href="#{{$reservation->id}}">予約を変更する</a>
+            </div>
             <!--予約変更モーダル-->
             <div class="modal" id="{{$reservation->id}}">
                 <a href="#!" class="modal-overlay"></a>
@@ -59,10 +60,10 @@
                             <h4>予約の変更</h4>
                         </div>
                         <div class="modal-reservation__content-table">
-                            <form class="modal-reservation__update-form" action="/reservation_update" method="POST">
-                            @method('PATCH')
-                            @csrf
-                                <table class="modal-reservation__table">
+                            <table class="modal-reservation__table">
+                                <form class="modal-reservation__update-form" action="/reservation_update" method="POST">
+                                @method('PATCH')
+                                @csrf
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Shop</th>
                                         <td class="modal-reservation__data">{{ $reservation->shop->shop_name }}</td>
@@ -70,7 +71,7 @@
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Date</th>
                                         <td class="modal-reservation__data">
-                                            <input class="modal-reservation__update-input" type="date" name="date" value="{{ $reservation->date }}">
+                                            <input class="modal-reservation__update-input" type="date"  min="{{$tomorrow}}" name="date" value="{{ $reservation->date }}">
                                         </td>
                                         <div class="form__error__container">
                                             <div class="form__error">
@@ -82,7 +83,7 @@
                                     </tr>
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Time</th>
-                                        <td class="modal-reservation__data">
+                                        <td class="modal-reservation__data-select">
                                             <select id="select_time" name="time">
                                                 <option selected>{{ substr($reservation->time, 0, 5) }}</option>
                                                 <option value="17:00">17:00</option>
@@ -104,7 +105,7 @@
                                     </tr>
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Number</th>
-                                        <td class="modal-reservation__data">
+                                        <td class="modal-reservation__data-select">
                                             <select id="select_number" name="number">
                                                 <option selected>{{ $reservation->number }}</option>
                                                 <option value="1人">1人</option>
@@ -154,11 +155,11 @@
                     </tr>
                     <tr class="reservation__row">
                         <th class="reservation__label">Time</th>
-                        <td class="reservation-form__data">{{ substr($visit->time, 0, 5) }}</td>
+                        <td class="reservation__data">{{ substr($visit->time, 0, 5) }}</td>
                     </tr>
-                    <tr class="reservation-form__row">
+                    <tr class="reservation__row">
                         <th class="reservation__label">Number</th>
-                        <td class="reservation-form__data">{{ $visit->number }}</td>
+                        <td class="reservation__data">{{ $visit->number }}</td>
                     </tr>
                 </table>
             </div>
@@ -166,13 +167,11 @@
                 $review = App\Models\Review::where('user_id',$user->id)->where('shop_id',$visit->shop->id)->first();
             @endphp
             @if(empty($review))
-            <a class="review__btn" href="#{{$visit->id}}">レビューを投稿する</a>
-            @else
-            <a></a>
-            @endif
-
-            <!--レビューモーダル-->
-            <div class="modal" id="{{$visit->id}}">
+            <div class="review">
+                <a class="review__btn" href="#{{$visit->shop_id}}">レビューを投稿する</a>
+            </div>
+            <!--レビュ投稿ーモーダル-->
+            <div class="modal" id="{{$visit->shop_id}}">
                 <a href="#!" class="modal-overlay"></a>
                 <div class="modal__inner">
                     <div class="modal__content">
@@ -184,7 +183,7 @@
                             <table class="modal-review__table">
                                 <tr class="modal-review__row">
                                     <th class="modal-review__label">評価点</th>
-                                    <td>
+                                    <td class="modal-review__data">
                                         <div class="stars">
                                             <span>
                                                 <input type="radio" name="star" value="5" id="star1">
@@ -193,7 +192,7 @@
                                                     <label for="star2">★</label>
                                                 <input type="radio" name="star" value="3" id="star3">
                                                     <label for="star3">★</label>
-                                                <input type="radio" name="star" value="3" id="star4">
+                                                <input type="radio" name="star" value="2" id="star4">
                                                     <label for="star4">★</label>
                                                 <input type="radio" name="star" value="1" id="star5">
                                                     <label for="star5">★</label>
@@ -210,7 +209,7 @@
                                 </div>
                                 <tr class="modal-review__row">
                                     <th class="modal-review__label">コメント</th>
-                                    <td>
+                                    <td class="modal-review__data">
                                         <textarea name="comment" cols="30" rows="3" value="{{ old('comment') }}" placeholder="10文字以上入力してください"></textarea>
                                     </td>
                                 </tr>
@@ -232,6 +231,9 @@
                     <a href="#" class="modal__close-btn">×</a>
                 </div>
             </div>
+            @else
+            <a></a>
+            @endif
         </div>
     @endif
     @endforeach
@@ -283,7 +285,7 @@
                                 <p class="review__count">(0件)</p>
                             @else
                                 <p class="star__avg">{{$star_avg}}</p>
-                                <a class="review__count" href="">({{$review_count}}件)</a>
+                                <a class="review__count" href="#{{$favorite->id}}">({{$review_count}}件)</a>
                             @endif
                         </div>
                     </div>
@@ -306,6 +308,50 @@
                             <button class="favorite__btn" type="submit"></button>
                         </form>
                     </div>
+                </div>
+            </div>
+            <!--レビュ一覧ーモーダル-->
+            <div class="modal" id="{{$favorite->id}}">
+                <a href="#!" class="modal-overlay"></a>
+                <div class="modal__inner">
+                    <div class="modal-review__content">
+                        <h4 class="modal__ttl">お店のレビュー</h4>
+                        @foreach($reviews as $review)
+                        @if($review->shop_id == $favorite->shop_id)
+                        <div class="review__content">
+                            <table class="modal-review-all__table">
+                                <tr class="modal-review-all__row">
+                                    <th class="modal-review__label">投稿者</th>
+                                    <td class="modal-review__data">{{$review->user->name}}</td>
+                                </tr>
+                                <tr class="modal-review-all__row">
+                                    <th class="modal-review__label">評価点</th>
+                                    <td class="modal-review__data">
+                                        <div class="review__star">
+                                        @if($review->star == 1)
+                                            <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
+                                        @elseif($review->star == 2)
+                                            <span class="yellow-star">★★</span><span class="gray-star">★★★</span>
+                                        @elseif($review->star == 3)
+                                            <span class="yellow-star">★★★</span><span class="gray-star">★★</span>
+                                        @elseif($review->star == 4)
+                                            <span class="yellow-star">★★★★</span><span class="gray-star">★</span>
+                                        @elseif($review->star == 5)
+                                            <span class="yellow-star">★★★★★</span>
+                                        @endif
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="modal-review-all__row">
+                                    <th class="modal-review__label">コメント</th>
+                                    <td class="modal-review__data">{{$review->comment}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        @endif
+                        @endforeach
+                    </div>
+                    <a href="#" class="modal__close-btn">×</a>
                 </div>
             </div>
             @endforeach
