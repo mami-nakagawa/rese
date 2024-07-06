@@ -11,20 +11,19 @@
         <div class="search-form__select">
             <select class="search-form__area-select" name="area">
                 <option disabled selected>All area</option>
-                <option value="東京都">東京都</option>
-                <option value="大阪府">大阪府</option>
-                <option value="福岡県">福岡県</option>
+                @foreach($shops->unique('area') as $shop)
+                <option value="{{ $shop->area }}" @if( request('shop_area')==$shop->area ) selected @endif>{{$shop->area}}
+                </option>
+                @endforeach
             </select>
         </div>
-
         <div class="search-form__select">
             <select class="search-form__genre-select" name="genre">
                 <option disabled selected>All genre</option>
-                <option value="寿司">寿司</option>
-                <option value="焼肉">焼肉</option>
-                <option value="居酒屋">居酒屋</option>
-                <option value="イタリアン">イタリアン</option>
-                <option value="ラーメン">ラーメン</option>
+                @foreach($shops->unique('genre') as $shop)
+                <option value="{{ $shop->genre }}" @if( request('shop_genre')==$shop->genre ) selected @endif>{{$shop->genre}}
+                </option>
+                @endforeach
             </select>
         </div>
         <div class="search-form__input">

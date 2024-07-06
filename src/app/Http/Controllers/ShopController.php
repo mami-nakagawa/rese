@@ -58,7 +58,7 @@ class ShopController extends Controller
         $query = $this->getSearchQuery($request, $query);
         $shops = $query->get();
 
-        return view('shop-all', compact('user', 'favorites', 'shops'));
+        return view('shop-all', compact('shops'));
     }
 
     public function detail(Request $request)
@@ -119,23 +119,6 @@ class ShopController extends Controller
         ]);
 
         return redirect()->back();
-    }
-
-    public function favorites(Request $request)
-    {
-        if ( $request->input('favorite') == 0) {
-            //ステータスが0のときはデータベースに情報を保存
-            Favorite::create([
-                'shop_id' => $request->input('shop_id'),
-                'user_id' => auth()->user()->id,
-            ]);
-           //ステータスが1のときはデータベースに情報を削除
-        } elseif ( $request->input('favorite')  == 1 ) {
-            Favorite::where('shop_id', "=", $request->input('shop_id'))
-                ->where('user_id', "=", auth()->user()->id)
-                ->delete();
-        }
-        return  $request->input('favorite');
     }
 
     public function favoriteDestroy(Request $request)

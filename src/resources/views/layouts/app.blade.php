@@ -47,23 +47,21 @@
         </nav>
     </div>
     <header class="header">
-
-                <div id="nav-toggle">
-                    <div>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            <div class="header__inner">
-                <a class="header__logo" href="/">
-                    Rese
-                </a>
-
+        <div id="nav-toggle">
+            <div>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="header__inner">
+            <a class="header__logo" href="/">
+                Rese
+            </a>
             <div class="header__search">
-            @yield('shop_search')
+                @yield('shop_search')
             </div>
-            </div>
+        </div>
     </header>
     <main>
         <div id="container">
