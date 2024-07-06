@@ -178,7 +178,7 @@
                         <div class="modal__ttl">
                             <h4>お店のレビュー</h4>
                         </div>
-                        <form class="review-form__form" action="/review" method="POST">
+                        <form class="review-form__form" id="form" action="/review" method="POST">
                         @csrf
                             <table class="modal-review__table">
                                 <tr class="modal-review__row">
@@ -186,16 +186,16 @@
                                     <td class="modal-review__data">
                                         <div class="stars">
                                             <span>
-                                                <input type="radio" name="star" value="5" id="star1">
-                                                    <label for="star1">★</label>
-                                                <input type="radio" name="star" value="4" id="star2">
-                                                    <label for="star2">★</label>
-                                                <input type="radio" name="star" value="3" id="star3">
-                                                    <label for="star3">★</label>
-                                                <input type="radio" name="star" value="2" id="star4">
-                                                    <label for="star4">★</label>
-                                                <input type="radio" name="star" value="1" id="star5">
-                                                    <label for="star5">★</label>
+                                                <input type="radio" name="star" value="5" id="{{$visit->shop_id}}_star1">
+                                                    <label for="{{$visit->shop_id}}_star1">★</label>
+                                                <input type="radio" name="star" value="4" id="{{$visit->shop_id}}_star2">
+                                                    <label for="{{$visit->shop_id}}_star2">★</label>
+                                                <input type="radio" name="star" value="3" id="{{$visit->shop_id}}_star3">
+                                                    <label for="{{$visit->shop_id}}_star3">★</label>
+                                                <input type="radio" name="star" value="2" id="{{$visit->shop_id}}_star4">
+                                                    <label for="{{$visit->shop_id}}_star4">★</label>
+                                                <input type="radio" name="star" value="1" id="{{$visit->shop_id}}_star5">
+                                                    <label for="{{$visit->shop_id}}_star5">★</label>
                                             </span>
                                         </div>
                                     </td>
@@ -224,7 +224,7 @@
                             <div class="modal-form__button">
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <input type="hidden" name="shop_id" value="{{ $visit->shop->id }}">
-                                <button class="modal-form__button-submit" type="submit">投稿する</button>
+                                <button class="modal-form__button-submit" id='form_submit' type="submit">投稿する</button>
                             </div>
                         </form>
                     </div>
@@ -358,4 +358,7 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+
 @endsection
