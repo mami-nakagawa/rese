@@ -1,0 +1,32 @@
+.done-page {
+    width: 35%;
+    height: auto;
+    margin: 50px auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    background-color: #fff;
+}
+
+.done-page__inner {
+    padding: 100px 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.done-page__message {
+    line-height: 0;
+    font-size: 22px;
+    margin-bottom: 60px;
+}
+
+.done-page__btn {
+    padding: 8px 15px;
+    background-color: rgb(45, 88, 229);
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 60px;
+    text-decoration: none;
+    font-size: 14px;
+}
