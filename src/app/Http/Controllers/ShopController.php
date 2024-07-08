@@ -74,20 +74,6 @@ class ShopController extends Controller
         return view('shop-detail', compact('user', 'shop', 'tomorrow', 'reviews', 'star_avg', 'review_count'));
     }
 
-    public function reservationUpdate(Request $request)
-    {
-        $reservation = Reservation::find($request->id);
-        $reservation->update(
-            $request->only([
-                'date',
-                'time',
-                'number',
-            ])
-        );
-
-        return redirect()->back();
-    }
-
     public function reservation(ReservationRequest $request)
     {
         Reservation::create(
@@ -101,6 +87,20 @@ class ShopController extends Controller
         );
 
         return view('done');
+    }
+
+    public function reservationUpdate(ReservationRequest $request)
+    {
+        $reservation = Reservation::find($request->id);
+        $reservation->update(
+            $request->only([
+                'date',
+                'time',
+                'number',
+            ])
+        );
+
+        return redirect()->back();
     }
 
     public function reservationDestroy(Request $request)
