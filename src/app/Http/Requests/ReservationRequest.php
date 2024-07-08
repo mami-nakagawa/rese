@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class ReservationRequest extends FormRequest
 {
@@ -24,11 +24,9 @@ class ReservationRequest extends FormRequest
      */
     public function rules()
     {
-        $yesterday = Carbon::yesterday();
-
         return [
             'date' => 'required',
-            'time' => 'required',
+            'time' => ['required',Rule::unique('reservations')->where('user_id', $this->input('user_id'))->where('shop_id', $this->input('shop_id'))->where('date', $this->input('date'))->where('time', $this->input('time'))],
             'number' => 'required',
         ];
     }
@@ -38,6 +36,7 @@ class ReservationRequest extends FormRequest
         return [
             'date.required' => '日付を選択してください',
             'time.required' => '予約時間を選択してください',
+            'time.unique' => '既に同じ日時で予約されています',
             'number.required' => '予約人数を選択してください',
         ];
     }
