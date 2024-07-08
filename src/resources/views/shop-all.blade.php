@@ -12,7 +12,7 @@
             <select class="search-form__area-select" name="area">
                 <option disabled selected>All area</option>
                 @foreach($shops->unique('area') as $shop)
-                <option value="{{ $shop->area }}" @if( request('shop_area')==$shop->area ) selected @endif>{{$shop->area}}
+                <option value="{{ $shop->area }}" @if(request('area')==$shop->area) selected @endif>{{$shop->area}}
                 </option>
                 @endforeach
             </select>
@@ -21,7 +21,7 @@
             <select class="search-form__genre-select" name="genre">
                 <option disabled selected>All genre</option>
                 @foreach($shops->unique('genre') as $shop)
-                <option value="{{ $shop->genre }}" @if( request('shop_genre')==$shop->genre ) selected @endif>{{$shop->genre}}
+                <option value="{{ $shop->genre }}" @if(request('genre')==$shop->genre) selected @endif>{{$shop->genre}}
                 </option>
                 @endforeach
             </select>

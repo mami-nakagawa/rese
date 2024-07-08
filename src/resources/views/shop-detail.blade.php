@@ -106,7 +106,7 @@
             <div class="reservation__form">
                 <div class="form__group">
                     <div class="form__input">
-                        <input id="select_date" type="date" min="{{$tomorrow}}" name="date">
+                        <input id="select_date" type="date" min="{{$tomorrow}}" name="date" value="{{ old('date') }}">
                     </div>
                     <div class="form__error__container">
                         <div class="form__error">
@@ -120,13 +120,13 @@
                     <div class="form__select">
                         <select id="select_time" name="time">
                             <option disabled selected>予約時間</option>
-                            <option value="17:00">17:00</option>
-                            <option value="17:30">17:30</option>
-                            <option value="18:00">18:00</option>
-                            <option value="18:30">18:30</option>
-                            <option value="19:00">19:00</option>
-                            <option value="19:30">19:30</option>
-                            <option value="20:00">20:00</option>
+                            <option value="17:00" @if(old('time')=="17:00") selected @endif>17:00</option>
+                            <option value="17:30" @if(old('time')=="17:30") selected @endif>17:30</option>
+                            <option value="18:00" @if(old('time')=="18:00") selected @endif>18:00</option>
+                            <option value="18:30" @if(old('time')=="18:30") selected @endif>18:30</option>
+                            <option value="19:00" @if(old('time')=="19:00") selected @endif>19:00</option>
+                            <option value="19:30" @if(old('time')=="19:30") selected @endif>19:30</option>
+                            <option value="20:00" @if(old('time')=="20:00") selected @endif>20:00</option>
                         </select>
                     </div>
                     <div class="form__error__container">
@@ -141,11 +141,11 @@
                     <div class="form__select">
                         <select id="select_number" name="number">
                             <option disabled selected>予約人数</option>
-                            <option value="1人">1人</option>
-                            <option value="2人">2人</option>
-                            <option value="3人">3人</option>
-                            <option value="4人">4人</option>
-                            <option value="5人">5人</option>
+                            <option value="1人" @if(old('number')=="1人") selected @endif>1人</option>
+                            <option value="2人" @if(old('number')=="2人") selected @endif>2人</option>
+                            <option value="3人" @if(old('number')=="3人") selected @endif>3人</option>
+                            <option value="4人" @if(old('number')=="4人") selected @endif>4人</option>
+                            <option value="5人" @if(old('number')=="5人") selected @endif>5人</option>
                         </select>
                     </div>
                     <div class="form__error__container">
