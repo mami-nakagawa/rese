@@ -175,6 +175,7 @@
     justify-content: center;
     text-align: center;
     margin: 0 auto;
+    overflow-y: scroll;
 }
 
 .modal__ttl {
