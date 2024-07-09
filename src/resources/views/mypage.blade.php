@@ -315,6 +315,7 @@
                 <a href="#!" class="modal-overlay"></a>
                 <div class="modal__inner">
                     <div class="modal-review__content">
+                        <a href="#" class="modal__close-btn">×</a>
                         <h4 class="modal__ttl">お店のレビュー</h4>
                         @foreach($reviews as $review)
                         @if($review->shop_id == $favorite->shop_id)
@@ -351,7 +352,6 @@
                         @endif
                         @endforeach
                     </div>
-                    <a href="#" class="modal__close-btn">×</a>
                 </div>
             </div>
             @endforeach
