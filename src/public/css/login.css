@@ -7,8 +7,21 @@
     background-color: #fff;
 }
 
+@media screen and (max-width: 768px) {
+    .card {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        width: 100%;
+    }
+}
+
 .card__content {
-    padding: 5px 30px 20px;
+    padding: 5px 15px 20px;
+    text-align: center;
 }
 
 .card__heading {
@@ -25,7 +38,7 @@
     border-left: none;
     border-right: none;
     border-bottom: solid 1px;
-    width: 90%;
+    width: 80%;
     font-size: 16px;
     margin-top: 20px;
 }
@@ -54,6 +67,8 @@
     color: red;
     font-size: 14px;
     padding-left: 30px;
+    text-align: left;
+    padding-left: 50px;
 }
 
 .form__button-submit {
@@ -64,6 +79,7 @@
     border: none;
     cursor: pointer;
     margin-top: 25px;
+    margin-right: 20px;
 }
 
 .form__button {

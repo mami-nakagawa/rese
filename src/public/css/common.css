@@ -1,7 +1,7 @@
 .header__inner {
     display: flex;
     justify-content: space-between;
-    padding: 30px 100px 30px;
+    padding: 30px 6% 30px;
     background-color: #f6f5f5;
     position: fixed;
     width: 100%;
@@ -19,7 +19,7 @@
 #nav-toggle {
     position: fixed;
     top: 34px;
-    left: 100px;
+    left: 6%;
     height: 40px;
     cursor: pointer;
     z-index: 1000;
@@ -86,7 +86,7 @@
     z-index: 900;
     height: 100%;
     margin: 0 auto;
-    padding: 110px 100px;
+    padding: 110px 6%;
 }
 
 #gloval-nav {
