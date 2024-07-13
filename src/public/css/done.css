@@ -1,5 +1,5 @@
-.done-page {
-    width: 35%;
+.done__inner {
+    width: 420px;
     height: auto;
     margin: 50px auto;
     border-radius: 5px;
@@ -7,19 +7,19 @@
     background-color: #fff;
 }
 
-.done-page__inner {
-    padding: 100px 30px;
+.done__card {
+    padding: 95px 30px;
     text-align: center;
     align-items: center;
 }
 
-.done-page__message {
+.done__message {
     line-height: 0;
     font-size: 22px;
     margin-bottom: 60px;
 }
 
-.done-page__btn {
+.back__btn {
     padding: 8px 15px;
     background-color: rgb(45, 88, 229);
     color: #FFF;

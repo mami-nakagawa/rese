@@ -13,7 +13,7 @@
 .shop-detail__flex {
     display: flex;
     justify-content: left;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     align-items: center;
 }
 
@@ -34,7 +34,6 @@
     padding-left: 13px;
     padding-right: 10px;
     margin: 0;
-    font-size: 28px;
 }
 
 .review__star {
@@ -143,7 +142,7 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    z-index: 970;
+    z-index: 990;
 }
 
 .modal:target {
@@ -186,7 +185,8 @@
 
 .modal__content {
     position: relative;
-    padding: 64px 64px;
+    padding: 64px 5%;
+    margin-top: 50px;
 }
 
 .modal__close-btn {
@@ -202,11 +202,13 @@
 
 .modal-review__content {
     position: relative;
-    padding: 64px 20%;
+    padding: 64px 5%;
 }
 
 .modal-review-all__table {
     text-align: left;
+    margin-left: 5%;
+    margin: 0 auto;
 }
 
 .modal-review-all__row {
@@ -219,11 +221,14 @@
 
 .review__label {
     text-align: left;
+    padding-left: 5%;
+    width: 10%;
 }
 
 .modal-review__data {
     text-align: left;
-    padding-left: 40px;
+    padding-left: 5%;
+    width: 80%;
 }
 
 .review__star {
@@ -256,7 +261,7 @@
 }
 
 .reservation__content {
-    padding: 15px 30px;
+    padding: 15px 5%;
 }
 
 .reservation__ttl {
@@ -275,7 +280,7 @@
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    width: 35%;
+    width: 180px;
 }
 
 #select_time, #select_number {
@@ -306,22 +311,27 @@
     color: red;
 }
 
-.confirm-form {
+.confirm__container {
     background-color: rgb(93, 124, 229);
     border-radius: 5px;
-    padding: 25px 20px;
+    padding: 25px 4%;
     margin-top: 20px;
-    margin-right: 40px;
+    margin-right: 8%;
+}
+
+.confirm__table {
+    width: 100%;
 }
 
 .confirm__label {
     text-align: left;
     font-weight: 400;
+    width: 26%;
 }
 
 .confirm__data {
     text-align: left;
-    padding-left: 40px;
+    width: 74%;
 }
 
 .form__button {
@@ -339,4 +349,99 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 0 0 5px 5px;
+}
+
+/*レスポンシブ*/
+@media screen and (max-width: 768px) {
+    #container {
+        padding: 110px 5%;
+    }
+
+    .content {
+        flex-flow: column;
+    }
+
+    .shop-detail {
+        width: 100%;
+    }
+
+    .reservation {
+        position: initial;
+        margin-top: 20px;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .form__button {
+        position: initial;
+        margin-top: 10px;
+    }
+
+    .modal__inner {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        width: 80%;
+        height: 85%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #container {
+            padding: 110px 4%;
+        }
+
+    .content {
+        flex-flow: column;
+    }
+
+    .shop-detail {
+        width: 100%;
+    }
+
+    .reservation {
+        position: initial;
+        margin-top: 20px;
+        width: 100%;
+        margin-left: 0;
+    }
+    .reservation__ttl {
+        font-size: 22px;
+    }
+
+    .shop-detail__ttl {
+        font-size: 22px;
+    }
+
+    .shop-detail__tag,
+    .shop-detail__text {
+        font-size: 14px;
+    }
+
+    .form__select::after {
+        left: 89%;
+    }
+
+    .confirm__table {
+        font-size: 14px;
+    }
+
+    .confirm__label {
+        width: 32%;
+    }
+    .confirm__data {
+        width: 68%;
+    }
+
+    .form__button {
+        position: initial;
+    }
+
+    .modal__inner {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        width: 90%;
+        height: 85%;
+    }
 }
