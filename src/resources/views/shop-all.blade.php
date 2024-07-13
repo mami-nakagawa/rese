@@ -11,8 +11,8 @@
         <div class="search-form__select">
             <select class="search-form__area-select" name="area">
                 <option disabled selected>All area</option>
-                @foreach($shops->unique('area') as $shop)
-                <option value="{{ $shop->area }}" @if(request('area')==$shop->area) selected @endif>{{$shop->area}}
+                @foreach($areas as $area)
+                <option value="{{ $area->id }}" @if(request('area')==$area->id) selected @endif>{{$area->area_name}}
                 </option>
                 @endforeach
             </select>
@@ -20,8 +20,8 @@
         <div class="search-form__select">
             <select class="search-form__genre-select" name="genre">
                 <option disabled selected>All genre</option>
-                @foreach($shops->unique('genre') as $shop)
-                <option value="{{ $shop->genre }}" @if(request('genre')==$shop->genre) selected @endif>{{$shop->genre}}
+                @foreach($genres as $genre)
+                <option value="{{ $genre->id }}" @if(request('genre')==$genre->id) selected @endif>{{$genre->genre_name}}
                 </option>
                 @endforeach
             </select>
@@ -84,8 +84,8 @@
                 </div>
             </div>
             <div class="card__content-tag">
-                <p class="card__content-tag-item">#{{$shop->area}}</p>
-                <p class="card__content-tag-item">#{{$shop->genre}}</p>
+                <p class="card__content-tag-item">#{{$shop->area->area_name}}</p>
+                <p class="card__content-tag-item">#{{$shop->genre->genre_name}}</p>
             </div>
             <div class="card__content-btn">
                 <form class="shop-detail__form" action="/detail/{shop_id}" method="get">
