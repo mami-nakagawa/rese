@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Area;
+use App\Models\Genre;
 use App\Models\Shop;
 use App\Models\Reservation;
 use App\Models\Favorite;
@@ -24,6 +26,8 @@ class ShopController extends Controller
 
     public function index(Request $request)
     {
+        $areas = Area::all();
+        $genres = Genre::all();
         $area = $request->input('area');
         $genre = $request->input('genre');
         $keyword = $request->input('keyword');
@@ -31,17 +35,15 @@ class ShopController extends Controller
         $query = Shop::query();
 
         if(!empty($area)) {
-            $query->where('area', 'LIKE', $area);
+            $query->where('area_id', 'LIKE', $area);
         }
 
         if(!empty($genre)) {
-            $query->where('genre', 'LIKE', $genre);
+            $query->where('genre_id', 'LIKE', $genre);
         }
 
         if(!empty($keyword)) {
             $query->where('shop_name', 'LIKE', "%{$keyword}%")
-                ->orWhere('area', 'LIKE', "%{$keyword}%")
-                ->orWhere('genre', 'LIKE', "%{$keyword}%")
                 ->orWhere('detail', 'LIKE', "%{$keyword}%");
         }
 
@@ -49,16 +51,7 @@ class ShopController extends Controller
         $user = Auth::user();
         $reviews = Review::all();
 
-        return view('shop-all', compact('user', 'shops', 'reviews'));
-    }
-
-    public function search(Request $request)
-    {
-        $query = Shop::query();
-        $query = $this->getSearchQuery($request, $query);
-        $shops = $query->get();
-
-        return view('shop-all', compact('shops'));
+        return view('shop-all', compact('areas', 'genres', 'user', 'shops', 'reviews'));
     }
 
     public function detail(Request $request)
