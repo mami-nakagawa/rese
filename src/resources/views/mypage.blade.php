@@ -210,7 +210,7 @@
                                 <tr class="modal-review__row">
                                     <th class="modal-review__label">コメント</th>
                                     <td class="modal-review__data">
-                                        <textarea name="comment" cols="30" rows="3" value="{{ old('comment') }}" placeholder="10文字以上入力してください"></textarea>
+                                        <textarea name="comment" cols="35" rows="9" value="{{ old('comment') }}" placeholder="10文字以上入力してください"></textarea>
                                     </td>
                                 </tr>
                                 <div class="form__error__container">
@@ -290,9 +290,9 @@
                         </div>
                     </div>
                     <div class="card__content-tag">
-                        <p class="card__content-tag-item">#{{ $favorite->shop->area }}</p>
+                        <p class="card__content-tag-item">#{{ $favorite->shop->area->area_name }}</p>
                         <p class="card__content-tag-item card__content-tag-item--last">
-                            #{{ $favorite->shop->genre }}
+                            #{{ $favorite->shop->genre->genre_name }}
                         </p>
                     </div>
                     <div class="card__content-btn">
