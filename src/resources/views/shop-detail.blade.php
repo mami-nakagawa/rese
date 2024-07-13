@@ -12,6 +12,8 @@
             <h2 class="shop-detail__ttl">
                 {{$shop->shop_name}}
             </h2>
+        </div>
+        <div class="shop-detail__flex">
             <div class="review__star">
                 @if(empty($star_avg))
                     <span class="star star0"></span>
@@ -46,8 +48,8 @@
             <img src="{{$shop->image}}" alt="shop_image" />
         </div>
         <div class="shop-detail__tag">
-            <p class="tag__item">#{{$shop->area}}</p>
-            <p class="tag__item--last">#{{$shop->genre}}</p>
+            <p class="tag__item">#{{$shop->area->area_name}}</p>
+            <p class="tag__item--last">#{{$shop->genre->genre_name}}</p>
         </div>
         <div class="shop-detail__text">
             <p class="detail__text">{{$shop->detail}}</p>
@@ -157,7 +159,7 @@
                     </div>
                 </div>
             </div>
-            <div class="confirm-form">
+            <div class="confirm__container">
                 <table class="confirm__table">
                     <tr class="confirm__row">
                         <th class="confirm__label">Shop</th>
