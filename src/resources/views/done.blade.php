@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-<div class="done-page">
-  <div class="done-page__inner">
-    <p class="done-page__message">ご予約ありがとうございます</p>
-    <a class="done-page__btn" href="/">戻る</a>
+<div class="done__inner">
+  <div class="done__card">
+    <p class="done__message">ご予約ありがとうございます</p>
+    <a class="back__btn" href="/">戻る</a>
   </div>
 </div>
 @endsection
