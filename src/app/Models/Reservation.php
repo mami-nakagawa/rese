@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Reservation extends Model
 {
@@ -22,5 +21,10 @@ class Reservation extends Model
     public function shop()
     {
         return $this->belongsTo(Shop::class);
+    }
+
+    public function review()
+    {
+        return $this->hasOne(Review::class);
     }
 }

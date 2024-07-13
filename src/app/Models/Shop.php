@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
 class Shop extends Model
 {
@@ -16,7 +15,7 @@ class Shop extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class, 'shop_id');
     }
 
     public function favorites()
@@ -24,13 +23,18 @@ class Shop extends Model
         return $this->hasMany(Favorite::class, 'shop_id');
     }
 
-    public function favorite_users()
+    public function area()
     {
-        return $this->belongsToMany(User::class, 'favorites', 'shop_id', 'user_id');
+        return $this->belongsTo(Area::class);
+    }
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
 
     public function reviews()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(Review::class, 'shop_id');
     }
 }
