@@ -160,5 +160,8 @@
         </div>
     </div>
     @endforeach
+    @for ($i = 0; $i < 3; $i++)
+        <div class="card dummy"></div>
+    @endfor
 </div>
 @endsection
