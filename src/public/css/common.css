@@ -192,3 +192,16 @@ body {
     background-color: #f6f5f5;
     font-family: Helvetica, sans-serif;
 }
+
+/*レスポンシブ*/
+@media screen and (max-width: 768px) {
+    .header__inner {
+        display: initial;
+    }
+
+    .header__search {
+        margin: 20px auto;
+        width: 100%;
+        margin-bottom: 0;
+    }
+}
