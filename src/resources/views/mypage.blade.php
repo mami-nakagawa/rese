@@ -71,7 +71,7 @@
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Date</th>
                                         <td class="modal-reservation__data">
-                                            <input class="modal-reservation__update-input" type="date"  min="{{$tomorrow}}" name="date" value="{{ $reservation->date }}">
+                                            <input id="select_date" type="date"  min="{{$tomorrow}}" name="date" value="{{ $reservation->date }}">
                                         </td>
                                         <div class="form__error__container">
                                             <div class="form__error">
@@ -355,6 +355,7 @@
                 </div>
             </div>
             @endforeach
+            <div class="card dummy"></div>
         </div>
     </div>
 </div>
