@@ -43,7 +43,7 @@ class ShopController extends Controller
         }
 
         if(!empty($keyword)) {
-            $query->where('shop_name', 'LIKE', "%{$keyword}%")
+            $query->where('name', 'LIKE', "%{$keyword}%")
                 ->orWhere('detail', 'LIKE', "%{$keyword}%");
         }
 
