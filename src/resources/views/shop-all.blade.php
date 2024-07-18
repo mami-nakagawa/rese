@@ -12,7 +12,7 @@
             <select class="search-form__area-select" name="area">
                 <option disabled selected>All area</option>
                 @foreach($areas as $area)
-                <option value="{{ $area->id }}" @if(request('area')==$area->id) selected @endif>{{$area->area_name}}
+                <option value="{{ $area->id }}" @if(request('area')==$area->id) selected @endif>{{$area->name}}
                 </option>
                 @endforeach
             </select>
@@ -21,7 +21,7 @@
             <select class="search-form__genre-select" name="genre">
                 <option disabled selected>All genre</option>
                 @foreach($genres as $genre)
-                <option value="{{ $genre->id }}" @if(request('genre')==$genre->id) selected @endif>{{$genre->genre_name}}
+                <option value="{{ $genre->id }}" @if(request('genre')==$genre->id) selected @endif>{{$genre->name}}
                 </option>
                 @endforeach
             </select>
@@ -44,7 +44,7 @@
         <div class="card__content">
             <div class="card__content-top">
                 <h3 class="card__content-ttl">
-                    {{$shop->shop_name}}
+                    {{$shop->name}}
                 </h3>
                 <div class="card__content-review">
                     @php
@@ -84,8 +84,8 @@
                 </div>
             </div>
             <div class="card__content-tag">
-                <p class="card__content-tag-item">#{{$shop->area->area_name}}</p>
-                <p class="card__content-tag-item">#{{$shop->genre->genre_name}}</p>
+                <p class="card__content-tag-item">#{{$shop->area->name}}</p>
+                <p class="card__content-tag-item">#{{$shop->genre->name}}</p>
             </div>
             <div class="card__content-btn">
                 <form class="shop-detail__form" action="/detail/{shop_id}" method="get">

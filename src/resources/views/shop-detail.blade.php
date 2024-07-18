@@ -10,7 +10,7 @@
         <div class="shop-detail__flex">
             <a class="home__link" href="/">＜</a>
             <h2 class="shop-detail__ttl">
-                {{$shop->shop_name}}
+                {{$shop->name}}
             </h2>
         </div>
         <div class="shop-detail__flex">
@@ -48,8 +48,8 @@
             <img src="{{$shop->image}}" alt="shop_image" />
         </div>
         <div class="shop-detail__tag">
-            <p class="tag__item">#{{$shop->area->area_name}}</p>
-            <p class="tag__item--last">#{{$shop->genre->genre_name}}</p>
+            <p class="tag__item">#{{$shop->area->name}}</p>
+            <p class="tag__item--last">#{{$shop->genre->name}}</p>
         </div>
         <div class="shop-detail__text">
             <p class="detail__text">{{$shop->detail}}</p>
@@ -163,7 +163,7 @@
                 <table class="confirm__table">
                     <tr class="confirm__row">
                         <th class="confirm__label">Shop</th>
-                        <td class="confirm__data">{{ $shop->shop_name }}</td>
+                        <td class="confirm__data">{{ $shop->name }}</td>
                     </tr>
                     <tr class="confirm__row">
                         <th class="confirm__label">Date</th>
