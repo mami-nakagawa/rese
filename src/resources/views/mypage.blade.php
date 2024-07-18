@@ -32,7 +32,7 @@
                 <table class="reservation__table">
                     <tr class="reservation__row">
                         <th class="reservation__label">Shop</th>
-                        <td class="reservation__data">{{ $reservation->shop->shop_name }}</td>
+                        <td class="reservation__data">{{ $reservation->shop->name }}</td>
                     </tr>
                     <tr class="reservation__row">
                         <th class="reservation__label">Date</th>
@@ -66,7 +66,7 @@
                                 @csrf
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Shop</th>
-                                        <td class="modal-reservation__data">{{ $reservation->shop->shop_name }}</td>
+                                        <td class="modal-reservation__data">{{ $reservation->shop->name }}</td>
                                     </tr>
                                     <tr class="modal-reservation__row">
                                         <th class="modal-reservation__label">Date</th>
@@ -147,7 +147,7 @@
                 <table class="reservation__table">
                     <tr class="reservation__row">
                         <th class="reservation__label">Shop</th>
-                        <td class="reservation__data">{{ $visit->shop->shop_name }}</td>
+                        <td class="reservation__data">{{ $visit->shop->name }}</td>
                     </tr>
                     <tr class="reservation__row">
                         <th class="reservation__label">Date</th>
@@ -178,7 +178,7 @@
                         <div class="modal__ttl">
                             <h4>お店のレビュー</h4>
                         </div>
-                        <form class="review-form__form" id="form" action="/review" method="POST">
+                        <form class="review-form__form" action="/review" method="POST">
                         @csrf
                             <table class="modal-review__table">
                                 <tr class="modal-review__row">
@@ -224,7 +224,7 @@
                             <div class="modal-form__button">
                                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                                 <input type="hidden" name="shop_id" value="{{ $visit->shop->id }}">
-                                <button class="modal-form__button-submit" id='form_submit' type="submit">投稿する</button>
+                                <button class="modal-form__button-submit" type="submit">投稿する</button>
                             </div>
                         </form>
                     </div>
@@ -250,7 +250,7 @@
                 <div class="card__content">
                     <div class="card__content-top">
                         <h3 class="card__content-ttl">
-                                {{ $favorite->shop->shop_name }}
+                                {{ $favorite->shop->name }}
                             </h3>
                         <div class="card__content-review">
                             @php
@@ -285,14 +285,14 @@
                                 <p class="review__count">(0件)</p>
                             @else
                                 <p class="star__avg">{{$star_avg}}</p>
-                                <a class="review__count" href="#{{$favorite->id}}">({{$review_count}}件)</a>
+                                <a class="review__count" href="#{{$favorite->shop->name}}">({{$review_count}}件)</a>
                             @endif
                         </div>
                     </div>
                     <div class="card__content-tag">
-                        <p class="card__content-tag-item">#{{ $favorite->shop->area->area_name }}</p>
+                        <p class="card__content-tag-item">#{{ $favorite->shop->area->name }}</p>
                         <p class="card__content-tag-item card__content-tag-item--last">
-                            #{{ $favorite->shop->genre->genre_name }}
+                            #{{ $favorite->shop->genre->name }}
                         </p>
                     </div>
                     <div class="card__content-btn">
@@ -311,7 +311,7 @@
                 </div>
             </div>
             <!--レビュ一覧ーモーダル-->
-            <div class="modal" id="{{$favorite->id}}">
+            <div class="modal" id="{{$favorite->shop->name}}">
                 <a href="#!" class="modal-overlay"></a>
                 <div class="modal__inner">
                     <div class="modal-review__content">
