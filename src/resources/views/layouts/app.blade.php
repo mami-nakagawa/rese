@@ -30,7 +30,13 @@
                     </form>
                 </li>
                 <li class="nav__item">
-                    <a class="nav__link" href="/mypage">Mypage</a>
+                    @role('admin')
+                        <a class="nav__link" href="/admin/register">Admin</a>
+                    @elserole('editor')
+                        <a class="nav__link" href="/editor/shop-admin">Admin</a>
+                    @else
+                        <a class="nav__link" href="/mypage">Mypage</a>
+                    @endrole
                 </li>
                 @else
                 <li class="nav__item">
