@@ -14,5 +14,8 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    //
+    public function admin()
+    {
+        return view('admin.register');
+    }
 }
