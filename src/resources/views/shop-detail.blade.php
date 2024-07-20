@@ -181,7 +181,9 @@
             </div>
             </div>
             <div class="form__button">
-                <input id="select_date" type="hidden" name="user_id" value="{{ $user->id }}">
+                @if (Auth::check())
+                    <input id="select_date" type="hidden" name="user_id" value="{{ $user->id }}">
+                @endif
                 <input id="select_date" type="hidden" name="shop_id" value="{{ $shop->id }}">
                 <button class="form__button-submit" type="submit">予約する</button>
             </div>

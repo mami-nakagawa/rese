@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -17,10 +18,10 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/thanks', [ShopController::class, 'thanks']);
+Route::get('/', [ShopController::class, 'index']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [ShopController::class, 'index']);
-    Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
     Route::post('/done', [ShopController::class, 'reservation']);
     Route::patch('/reservation_update', [ShopController::class, 'reservationUpdate']);
     Route::delete('/reservation_delete', [ShopController::class, 'reservationDestroy']);
@@ -28,4 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/register', [AdminController::class, 'admin']);
+    Route::post('/admin/done', [AdminController::class, 'register']);
 });

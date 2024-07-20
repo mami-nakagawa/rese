@@ -94,9 +94,11 @@
                     <button class="shop-detail__btn" type="submit">詳しくみる</button>
                 </form>
                 <div class="favorite">
-            @php
-                $favorite = App\Models\Favorite::where('user_id',$user->id)->where('shop_id',$shop->id)->first();
-            @endphp
+            @if (Auth::check())
+                @php
+                    $favorite = App\Models\Favorite::where('user_id',$user->id)->where('shop_id',$shop->id)->first();
+                @endphp
+            @endif
             @if(empty($favorite))
                 <form class="favorite__form" action="/favorite" method="post">
                 @csrf
