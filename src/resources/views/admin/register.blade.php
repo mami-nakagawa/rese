@@ -8,7 +8,7 @@
     <p>Registration</p>
   </div>
   <div class="card__content">
-    <form class="form" action="/admin/register" method="post">
+    <form class="form" action="/admin/done" method="post">
       @csrf
       <div class="form__group">
           <div class="form__input-username">
