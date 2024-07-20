@@ -29,9 +29,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
-});
 
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/register', [AdminController::class, 'admin']);
-    Route::post('/admin/done', [AdminController::class, 'register']);
+    Route::group(['middleware' => ['role:admin']], function () {
+        Route::get('/admin/register', [AdminController::class, 'admin']);
+        Route::post('/admin/done', [AdminController::class, 'register']);
+    });
 });
