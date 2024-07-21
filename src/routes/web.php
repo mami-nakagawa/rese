@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\EditorController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -30,8 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
 
-    Route::group(['middleware' => ['role:admin']], function () {
-        Route::get('/admin/register', [AdminController::class, 'admin']);
-        Route::post('/admin/done', [AdminController::class, 'register']);
-    });
+    Route::get('/admin/register', [AdminController::class, 'admin']);
+    Route::post('/admin/done', [AdminController::class, 'register']);
+
+    Route::get('/editor/admin', [EditorController::class, 'admin']);
+    Route::post('/editor/done', [EditorController::class, 'create']);
+    Route::post('/editor/update', [EditorController::class, 'update']);
 });
