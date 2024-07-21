@@ -33,7 +33,7 @@
                     @role('admin')
                         <a class="nav__link" href="/admin/register">Admin</a>
                     @elserole('editor')
-                        <a class="nav__link" href="/editor/shop-admin">Admin</a>
+                        <a class="nav__link" href="/editor/admin">Admin</a>
                     @else
                         <a class="nav__link" href="/mypage">Mypage</a>
                     @endrole
