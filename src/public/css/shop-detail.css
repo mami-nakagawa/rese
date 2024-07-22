@@ -334,6 +334,10 @@
     width: 74%;
 }
 
+#selectValueNumber {
+    display: inline-block;
+}
+
 .form__button {
     position: absolute;
     bottom: 0;

@@ -143,11 +143,11 @@
                     <div class="form__select">
                         <select id="select_number" name="number">
                             <option disabled selected>予約人数</option>
-                            <option value="1人" @if(old('number')=="1人") selected @endif>1人</option>
-                            <option value="2人" @if(old('number')=="2人") selected @endif>2人</option>
-                            <option value="3人" @if(old('number')=="3人") selected @endif>3人</option>
-                            <option value="4人" @if(old('number')=="4人") selected @endif>4人</option>
-                            <option value="5人" @if(old('number')=="5人") selected @endif>5人</option>
+                            <option value="1" @if(old('number')=="1") selected @endif>1人</option>
+                            <option value="2" @if(old('number')=="2") selected @endif>2人</option>
+                            <option value="3" @if(old('number')=="3") selected @endif>3人</option>
+                            <option value="4" @if(old('number')=="4") selected @endif>4人</option>
+                            <option value="5" @if(old('number')=="5") selected @endif>5人</option>
                         </select>
                     </div>
                     <div class="form__error__container">
@@ -175,7 +175,7 @@
                     </tr>
                     <tr class="confirm-form__row">
                         <th class="confirm__label">Number</th>
-                        <td class="confirm__data"><div id="selectValueNumber"></div></td>
+                        <td class="confirm__data"><div id="selectValueNumber"></div>人</td>
                     </tr>
                 </table>
             </div>

@@ -44,7 +44,7 @@
                     </tr>
                     <tr class="reservation__row">
                         <th class="reservation__label">Number</th>
-                        <td class="reservation__data">{{ $reservation->number }}</td>
+                        <td class="reservation__data">{{ $reservation->number }}人</td>
                     </tr>
                 </table>
             </div>
@@ -107,12 +107,12 @@
                                         <th class="modal-reservation__label">Number</th>
                                         <td class="modal-reservation__data-select">
                                             <select id="select_number" name="number">
-                                                <option selected>{{ $reservation->number }}</option>
-                                                <option value="1人">1人</option>
-                                                <option value="2人">2人</option>
-                                                <option value="3人">3人</option>
-                                                <option value="4人">4人</option>
-                                                <option value="5人">5人</option>
+                                                <option selected>{{ $reservation->number }}人</option>
+                                                <option value="1">1人</option>
+                                                <option value="2">2人</option>
+                                                <option value="3">3人</option>
+                                                <option value="4">4人</option>
+                                                <option value="5">5人</option>
                                             </select>
                                         </td>
                                         <div class="form__error__container">
@@ -159,7 +159,7 @@
                     </tr>
                     <tr class="reservation__row">
                         <th class="reservation__label">Number</th>
-                        <td class="reservation__data">{{ $visit->number }}</td>
+                        <td class="reservation__data">{{ $visit->number }}人</td>
                     </tr>
                 </table>
             </div>
