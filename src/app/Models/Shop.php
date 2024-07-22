@@ -13,16 +13,6 @@ class Shop extends Model
         'id',
     ];
 
-    public function reservations()
-    {
-        return $this->hasMany(Reservation::class, 'shop_id');
-    }
-
-    public function favorites()
-    {
-        return $this->hasMany(Favorite::class, 'shop_id');
-    }
-
     public function area()
     {
         return $this->belongsTo(Area::class);
@@ -33,8 +23,23 @@ class Shop extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class, 'shop_id');
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class, 'shop_id');
+    }
+
     public function reviews()
     {
         return $this->hasMany(Review::class, 'shop_id');
+    }
+
+    public function shopRepresentative()
+    {
+        return $this->hasOne(ShopRepresentatives::class, 'shop_id');
     }
 }
