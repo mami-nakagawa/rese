@@ -16,7 +16,7 @@ class CreateShopRepresentativesTable extends Migration
         Schema::create('shop_representatives', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('shop_id')->nullable()->constrained()->cascadeOnDelete();
             $table->unique(['user_id', 'shop_id']);
             $table->timestamps();
         });
