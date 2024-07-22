@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Area;
-use App\Models\Genre;
 use App\Models\Shop;
-use App\Models\Reservation;
+use App\Models\ShopRepresentative;
+use Spatie\Permission\Models\Role;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,5 +16,20 @@ class AdminController extends Controller
     public function admin()
     {
         return view('admin.register');
+    }
+
+    public function register(Request $request)
+    {
+        $password = $request->password;
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($password),
+        ]);
+
+        $user->roles()->attach(2);
+
+        return view('admin.done');
     }
 }
