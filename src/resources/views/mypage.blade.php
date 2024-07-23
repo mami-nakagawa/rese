@@ -360,6 +360,3 @@
     </div>
 </div>
 @endsection
-@section('script')
-
-@endsection
