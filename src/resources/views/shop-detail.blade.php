@@ -52,7 +52,7 @@
             <p class="tag__item--last">#{{$shop->genre->name}}</p>
         </div>
         <div class="shop-detail__text">
-            <p class="detail__text">{{$shop->detail}}</p>
+            <p class="detail__text">{{$shop->summary}}</p>
         </div>
 
         <!--レビュ一覧ーモーダル-->
