@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav__item">
                     @role('admin')
-                        <a class="nav__link" href="/admin/register">Admin</a>
+                        <a class="nav__link" href="/admin/admin">Admin</a>
                     @elserole('editor')
                         <a class="nav__link" href="/editor/admin">Admin</a>
                     @else
