@@ -83,3 +83,11 @@
 .form__button {
     text-align: right;
 }
+
+.admin__ttl-container {
+    text-align: center;
+}
+
+.admin__ttl {
+    font-size: 30px;
+}
