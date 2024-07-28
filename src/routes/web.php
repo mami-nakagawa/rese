@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
 
-    Route::get('/admin/register', [AdminController::class, 'admin']);
+    Route::get('/admin/admin', [AdminController::class, 'admin']);
     Route::post('/admin/done', [AdminController::class, 'register']);
 
     Route::get('/editor/admin', [EditorController::class, 'admin']);
