@@ -15,7 +15,9 @@ class AdminController extends Controller
 {
     public function admin()
     {
-        return view('admin.register');
+        $user = Auth::user();
+
+        return view('admin.admin', compact('user'));
     }
 
     public function register(Request $request)
