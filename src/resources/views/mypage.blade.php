@@ -85,14 +85,13 @@
                                         <th class="modal-reservation__label">Time</th>
                                         <td class="modal-reservation__data-select">
                                             <select id="select_time" name="time">
-                                                <option selected>{{ substr($reservation->time, 0, 5) }}</option>
-                                                <option value="17:00">17:00</option>
-                                                <option value="17:30">17:30</option>
-                                                <option value="18:00">18:00</option>
-                                                <option value="18:30">18:30</option>
-                                                <option value="19:00">19:00</option>
-                                                <option value="19:30">19:30</option>
-                                                <option value="20:00">20:00</option>
+                                                <option value="17:00" @if(substr($reservation->time, 0, 5)=="17:00") selected @endif>17:00</option>
+                                                <option value="17:30" @if(substr($reservation->time, 0, 5)=="17:30") selected @endif>17:30</option>
+                                                <option value="18:00" @if(substr($reservation->time, 0, 5)=="18:00") selected @endif>18:00</option>
+                                                <option value="18:30" @if(substr($reservation->time, 0, 5)=="18:30") selected @endif>18:30</option>
+                                                <option value="19:00" @if(substr($reservation->time, 0, 5)=="19:00") selected @endif>19:00</option>
+                                                <option value="19:30" @if(substr($reservation->time, 0, 5)=="19:30") selected @endif>19:30</option>
+                                                <option value="20:00" @if(substr($reservation->time, 0, 5)=="20:00") selected @endif>20:00</option>
                                             </select>
                                         </td>
                                         <div class="form__error__container">
@@ -107,12 +106,11 @@
                                         <th class="modal-reservation__label">Number</th>
                                         <td class="modal-reservation__data-select">
                                             <select id="select_number" name="number">
-                                                <option selected>{{ $reservation->number }}人</option>
-                                                <option value="1">1人</option>
-                                                <option value="2">2人</option>
-                                                <option value="3">3人</option>
-                                                <option value="4">4人</option>
-                                                <option value="5">5人</option>
+                                                <option value="1" @if($reservation->number=="1") selected @endif>1人</option>
+                                                <option value="2" @if($reservation->number=="2") selected @endif>2人</option>
+                                                <option value="3" @if($reservation->number=="3") selected @endif>3人</option>
+                                                <option value="4" @if($reservation->number=="4") selected @endif>4人</option>
+                                                <option value="5" @if($reservation->number=="5") selected @endif>5人</option>
                                             </select>
                                         </td>
                                         <div class="form__error__container">
@@ -210,7 +208,7 @@
                                 <tr class="modal-review__row">
                                     <th class="modal-review__label">コメント</th>
                                     <td class="modal-review__data">
-                                        <textarea name="comment" cols="35" rows="9" value="{{ old('comment') }}" placeholder="10文字以上入力してください"></textarea>
+                                        <textarea name="comment" cols="35" rows="9" placeholder="10文字以上入力してください"></textarea>
                                     </td>
                                 </tr>
                                 <div class="form__error__container">
