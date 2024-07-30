@@ -176,11 +176,11 @@
                         <div class="modal__ttl">
                             <h4>お店のレビュー</h4>
                         </div>
-                        <form class="review-form__form" action="/review" method="POST">
+                        <form class="review-form__form" action="/review" method="POST" enctype='multipart/form-data'>
                         @csrf
                             <table class="modal-review__table">
                                 <tr class="modal-review__row">
-                                    <th class="modal-review__label">評価点</th>
+                                    <th class="modal-review__label">評価点<span class="require">(必須)</span></th>
                                     <td class="modal-review__data">
                                         <div class="stars">
                                             <span>
@@ -206,14 +206,27 @@
                                     </div>
                                 </div>
                                 <tr class="modal-review__row">
-                                    <th class="modal-review__label">コメント</th>
+                                    <th class="modal-review__label">コメント<span class="require">(必須)</span></th>
                                     <td class="modal-review__data">
-                                        <textarea name="comment" cols="35" rows="9" placeholder="10文字以上入力してください"></textarea>
+                                        <textarea name="comment" cols="30" rows="7" placeholder="10文字以上入力してください"></textarea>
                                     </td>
                                 </tr>
                                 <div class="form__error__container">
                                     <div class="form__error">
                                         @error('comment')
+                                        {{ $message }}
+                                        @enderror
+                                    </div>
+                                </div>
+                                <tr class="modal-review__row">
+                                    <th class="modal-review__label">画像を追加</th>
+                                    <td class="modal-review__data">
+                                        <input type="file" name="image" />
+                                    </td>
+                                </tr>
+                                <div class="form__error__container">
+                                    <div class="form__error">
+                                        @error('image')
                                         {{ $message }}
                                         @enderror
                                     </div>
@@ -320,12 +333,12 @@
                         <div class="review__content">
                             <table class="modal-review-all__table">
                                 <tr class="modal-review-all__row">
-                                    <th class="modal-review__label">投稿者</th>
-                                    <td class="modal-review__data">{{$review->user->name}}</td>
+                                    <th class="modal-review-all__label">投稿者</th>
+                                    <td class="modal-review-all__data">{{$review->user->name}}</td>
                                 </tr>
                                 <tr class="modal-review-all__row">
-                                    <th class="modal-review__label">評価点</th>
-                                    <td class="modal-review__data">
+                                    <th class="modal-review-all__label">評価点</th>
+                                    <td class="modal-review-all__data">
                                         <div class="review__star">
                                         @if($review->star == 1)
                                             <span class="yellow-star">★</span><span class="gray-star">★★★★</span>
@@ -342,8 +355,8 @@
                                     </td>
                                 </tr>
                                 <tr class="modal-review-all__row">
-                                    <th class="modal-review__label">コメント</th>
-                                    <td class="modal-review__data">{{$review->comment}}</td>
+                                    <th class="modal-review-all__label">コメント</th>
+                                    <td class="modal-review-all__data">{{$review->comment}}</td>
                                 </tr>
                             </table>
                         </div>
