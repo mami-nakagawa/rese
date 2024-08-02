@@ -33,15 +33,15 @@ class EditorController extends Controller
 
     public function create(Request $request)
     {
-        $shop = Shop::create(
-            $request->only([
-                'name',
-                'area_id',
-                'genre_id',
-                'summary',
-                'image',
-            ])
-        );
+        $image = $request->file('image')->store('public/shops');
+
+        $shop = Shop::create([
+            'name' => $request->name,
+            'area_id' => $request->area_id,
+            'genre_id' => $request->genre_id,
+            'summary' => $request->summary,
+            'image' => basename($image),
+        ]);
 
         $user = Auth::user();
 
@@ -55,16 +55,16 @@ class EditorController extends Controller
 
     public function update(Request $request)
     {
+        $image = $request->file('image')->store('public/shops');
+
         $shop = Shop::find($request->id);
-        $shop->update(
-            $request->only([
-                'name',
-                'area_id',
-                'genre_id',
-                'summary',
-                'image',
-            ])
-        );
+        $shop->update([
+            'name' => $request->name,
+            'area_id' => $request->area_id,
+            'genre_id' => $request->genre_id,
+            'summary' => $request->summary,
+            'image' => basename($image),
+        ]);
 
         return redirect()->back()->with('message','店舗情報を更新しました');
     }
