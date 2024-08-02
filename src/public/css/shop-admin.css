@@ -68,6 +68,13 @@
     height: 30px;
 }
 
+.file::file-selector-button {
+    height: 100%;
+    border: none;
+    border-right: 1px solid black;
+    cursor: pointer;
+}
+
 .form__error {
     color: red;
     font-size: 14px;
@@ -115,8 +122,14 @@
     border-collapse: collapse;
 }
 
+.reservation__row:first-child {
+    background-color: rgb(45, 88, 229);
+    color: #FFF;
+}
+
 .reservation__row {
     border: 1px solid rgb(101, 100, 100);
+    background-color: #FFF;
 }
 
 .reservation__label {
@@ -215,7 +228,7 @@
         font-size: 14px;
     }
 
-    .check-reservation__ttl {
+    .check-reservation__ttl, .check-reservation__content {
         padding-left: 35px;
     }
 }

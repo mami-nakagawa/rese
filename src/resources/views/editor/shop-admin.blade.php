@@ -23,7 +23,7 @@
                 <p>店舗情報の登録</p>
             </div>
             <div class="card__content">
-                <form class="form" action="/editor/done" method="post">
+                <form class="form" action="/editor/done" method="post" enctype='multipart/form-data'>
                 @csrf
                     <div class="form__group">
                         <div class="form__input">
@@ -44,7 +44,7 @@
                             <select class="select" name="area_id">
                                 <option disabled selected>選択して下さい</option>
                                 @foreach($areas as $area)
-                                <option value="{{ $area->id }}" @if(request('area')==$area->id) selected @endif>{{$area->name}}
+                                <option value="{{ $area->id }}" @if(old('area_id')==$area->id) selected @endif>{{$area->name}}
                                 </option>
                                 @endforeach
                             </select>
@@ -63,7 +63,7 @@
                             <select class="select" name="genre_id">
                                 <option disabled selected>選択して下さい</option>
                                 @foreach($genres as $genre)
-                                <option value="{{ $genre->id }}" @if(request('genre')==$genre->id) selected @endif>{{$genre->name}}
+                                <option value="{{ $genre->id }}" @if(old('genre_id')==$genre->id) selected @endif>{{$genre->name}}
                                 </option>
                                 @endforeach
                             </select>
@@ -91,8 +91,8 @@
                     </div>
                     <div class="form__group">
                         <div class="form__text">
-                            <div class="form__label">画像URL:</div>
-                            <textarea class="text__image" name="image" cols="30" rows="3">{{ old('image') }}</textarea>
+                            <div class="form__label">画像:</div>
+                            <input class="input file" type="file" name="image" value="{{ old('image') }}" />
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">
@@ -126,7 +126,7 @@
                 <p>店舗情報の更新</p>
             </div>
             <div class="card__content">
-                <form class="form" action="/editor/update" method="post">
+                <form class="form" action="/editor/update" method="post" enctype='multipart/form-data'>
                 @csrf
                     <div class="form__group">
                         <div class="form__input">
@@ -145,9 +145,8 @@
                         <div class="form__select">
                             <div class="form__label">地域:</div>
                             <select class="select" name="area_id">
-                                <option disabled selected>{{ $shop_representative->shop->area->name }}</option>
                                 @foreach($areas as $area)
-                                <option value="{{ $area->id }}" @if(request('area')==$area->id) selected @endif>{{$area->name}}
+                                <option value="{{ $area->id }}" @if(($shop_representative->shop->area_id)==$area->id) selected @endif>{{$area->name}}
                                 </option>
                                 @endforeach
                             </select>
@@ -164,9 +163,8 @@
                         <div class="form__select">
                             <div class="form__label">ジャンル:</div>
                             <select class="select" name="genre_id">
-                                <option disabled selected>{{ $shop_representative->shop->genre->name }}</option>
                                 @foreach($genres as $genre)
-                                <option value="{{ $genre->id }}" @if(request('genre')==$genre->id) selected @endif>{{$genre->name}}
+                                <option value="{{ $genre->id }}" @if(($shop_representative->shop->genre_id)==$genre->id) selected @endif>{{$genre->name}}
                                 </option>
                                 @endforeach
                             </select>
@@ -194,8 +192,8 @@
                     </div>
                     <div class="form__group">
                         <div class="form__text">
-                            <div class="form__label">画像URL:</div>
-                            <textarea class="text__image" name="image" cols="30" rows="3">{{ $shop_representative->shop->image }}</textarea>
+                            <div class="form__label">画像:</div>
+                            <input class="input file" type="file" name="image" value="{{ $shop_representative->shop->image }}" />
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">

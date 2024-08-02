@@ -221,7 +221,7 @@
                                 <tr class="modal-review__row">
                                     <th class="modal-review__label">画像を追加</th>
                                     <td class="modal-review__data">
-                                        <input type="file" name="image" />
+                                        <input class="file" type="file" name="image" />
                                     </td>
                                 </tr>
                                 <div class="form__error__container">
@@ -358,6 +358,14 @@
                                     <th class="modal-review-all__label">コメント</th>
                                     <td class="modal-review-all__data">{{$review->comment}}</td>
                                 </tr>
+                                @if($review->image)
+                                <tr class="modal-review-all__row">
+                                    <th class="modal-review-all__label">画像</th>
+                                    <td class="modal-review-all__data">
+                                        <img class="review__img" src="{{ asset('storage/reviews/'.$review->image) }}" alt="review_image" />
+                                    </td>
+                                </tr>
+                                @endif
                             </table>
                         </div>
                         @endif
