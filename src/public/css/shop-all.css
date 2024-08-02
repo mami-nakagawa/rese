@@ -256,7 +256,7 @@
 }
 
 .red-heart {
-    conent: '';
+    content: '';
     background: url(../img/red-heart.png);
     background-size: cover;
     vertical-align: middle;
