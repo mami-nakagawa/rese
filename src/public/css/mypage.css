@@ -456,14 +456,12 @@
 .modal-review-all__label {
     text-align: left;
     padding-left: 0%;
-    color: black;
     width: 20%;
 }
 
 .modal-review-all__data {
     text-align: left;
     padding-left: 5%;
-    color: black;
     width: 80%;
 }
 
@@ -489,7 +487,7 @@
 }
 
 .review__img {
-    width: 30%;
+    width: 100px;
 }
 
 .modal-form__button-submit {
