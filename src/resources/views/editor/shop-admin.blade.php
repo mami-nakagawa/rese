@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="form__group">
-                        <div class="form__text">
+                        <div class="form__input">
                             <div class="form__label">画像:</div>
                             <input class="input file" type="file" name="image" value="{{ old('image') }}" />
                         </div>
@@ -191,9 +191,16 @@
                         </div>
                     </div>
                     <div class="form__group">
-                        <div class="form__text">
-                            <div class="form__label">画像:</div>
-                            <input class="input file" type="file" name="image" value="{{ $shop_representative->shop->image }}" />
+                        <div class="form__input--file">
+                            <div class="form__label--file">画像:</div>
+                            <div class="shop-img__container">
+                                <p>現在の画像</p>
+                                <img class="shop__img" src="{{ asset('storage/shops/'.$shop_representative->shop->image) }}" alt="shop_image">
+                            </div>
+                            <div class="new-file__container">
+                                <p>画像を変更する</p>
+                                <input class="input new__file" type="file" name="image"/>
+                            </div>
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">
