@@ -91,6 +91,14 @@
                                 <th class="modal-review__label">コメント</th>
                                 <td class="modal-review__data">{{$review->comment}}</td>
                             </tr>
+                            @if($review->image)
+                            <tr class="modal-review-all__row">
+                                <th class="modal-review__label">画像</th>
+                                <td class="modal-review__data">
+                                    <img class="review__img" src="{{ asset('storage/reviews/'.$review->image) }}" alt="review_image" />
+                                </td>
+                            </tr>
+                            @endif
                         </table>
                     </div>
                     @endif

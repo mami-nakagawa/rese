@@ -243,6 +243,10 @@
     color: #D2D2D2;
 }
 
+.review__img {
+    width: 100px;
+}
+
 /*予約*/
 .reservation{
     margin-left: 5%;
