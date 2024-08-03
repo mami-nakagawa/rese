@@ -139,14 +139,15 @@ class ShopController extends Controller
 
     public function review(ReviewRequest $request)
     {
-        Review::create(
-            $request->only([
-                'user_id',
-                'shop_id',
-                'star',
-                'comment',
-            ])
-        );
+        $image = $request->file('image')->store('public/reviews');
+
+        Review::create([
+            'user_id' => $request->user_id,
+            'shop_id' => $request->shop_id,
+            'star' => $request->star,
+            'comment' => $request->comment,
+            'image' => basename($image),
+        ]);
 
         return redirect()->back();
     }

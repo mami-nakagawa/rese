@@ -256,7 +256,7 @@
 }
 
 .red-heart {
-    conent: '';
+    content: '';
     background: url(../img/red-heart.png);
     background-size: cover;
     vertical-align: middle;
@@ -385,6 +385,10 @@
 
 .gray-star {
     color: #D2D2D2;
+}
+
+.review__img {
+    width: 100px;
 }
 
 /*レスポンシブ*/

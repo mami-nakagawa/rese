@@ -50,6 +50,12 @@
     margin-top: 20px;
 }
 
+.form__input--file {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
 .form__label {
     display: inline-block;
     width: 80px;
@@ -57,7 +63,14 @@
     font-weight: bold;
 }
 
-.input, .select, .text__summary, .text__image {
+.form__label--file {
+    width: 80px;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 4%;
+}
+
+.input, .select, .text__summary {
     width: 75%;
     border-radius: 5px;
     border: 1px solid;
@@ -66,6 +79,44 @@
 
 .input, .select {
     height: 30px;
+}
+
+.shop-img__container {
+    width: 120px;
+    padding-left: 1%;
+    padding-right: 1%;
+    text-align: left;
+}
+
+.shop-img__container p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.shop__img {
+    width: 100%;
+}
+
+.new-file__container p {
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.new__file {
+    width: 100%;
+    margin-bottom: 40px;
+    font-size: 0.9vw;
+}
+
+.file::file-selector-button, .new__file::file-selector-button {
+    height: 100%;
+    border: none;
+    border-right: 1px solid black;
+    cursor: pointer;
+    font-size: 0.9vw;
 }
 
 .form__error {
@@ -115,8 +166,14 @@
     border-collapse: collapse;
 }
 
+.reservation__row:first-child {
+    background-color: rgb(45, 88, 229);
+    color: #FFF;
+}
+
 .reservation__row {
     border: 1px solid rgb(101, 100, 100);
+    background-color: #FFF;
 }
 
 .reservation__label {
@@ -204,6 +261,23 @@
         margin-bottom: 30px;
     }
 
+    .form__label--file {
+        margin-left: 6%;
+    }
+
+    .new-file__container {
+        width: 57%;
+    }
+
+    .new__file {
+        font-size: 1.7vw;
+    }
+
+    .file::file-selector-button,
+    .new__file::file-selector-button {
+        font-size: 1.7vw;
+    }
+
     .card, .reservation__table {
         width: 90%;
         height: auto;
@@ -215,7 +289,7 @@
         font-size: 14px;
     }
 
-    .check-reservation__ttl {
+    .check-reservation__ttl, .check-reservation__content {
         padding-left: 35px;
     }
 }
