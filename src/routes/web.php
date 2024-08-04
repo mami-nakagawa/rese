@@ -22,7 +22,7 @@ Route::get('/thanks', [ShopController::class, 'thanks']);
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'verified', 'web')->group(function () {
     Route::post('/done', [ShopController::class, 'reservation']);
     Route::patch('/reservation_update', [ShopController::class, 'reservationUpdate']);
     Route::delete('/reservation_delete', [ShopController::class, 'reservationDestroy']);
@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
+});
 
     Route::get('/admin/admin', [AdminController::class, 'admin']);
     Route::post('/admin/done', [AdminController::class, 'register']);
@@ -37,4 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/editor/admin', [EditorController::class, 'admin']);
     Route::post('/editor/done', [EditorController::class, 'create']);
     Route::post('/editor/update', [EditorController::class, 'update']);
-});
+
+
