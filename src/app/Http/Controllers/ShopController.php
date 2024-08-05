@@ -21,6 +21,8 @@ class ShopController extends Controller
 
     public function thanks()
     {
+        Auth::logout();
+
         return view('thanks');
     }
 

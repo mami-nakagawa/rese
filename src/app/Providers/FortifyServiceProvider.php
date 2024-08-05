@@ -22,8 +22,6 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(RegisterResponse::class, new class implements RegisterResponse {
         public function toResponse($request)
         {
-            Auth::logout();
-
             return redirect('/thanks');
         }
         });
@@ -42,6 +40,10 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::loginView(function () {
             return view('auth.login');
+        });
+
+        Fortify::verifyEmailView(function () {
+            return view('auth.verify-email');
         });
 
         RateLimiter::for('login', function (Request $request) {

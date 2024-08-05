@@ -8,7 +8,7 @@
 <div class="thanks__inner">
   <div class="thanks__card">
     <p class="thanks__message">会員登録ありがとうございます</p>
-    <a class="login__btn" href="/">ログインする</a>
+    <a class="login__btn" href="/login">ログインする</a>
   </div>
 </div>
 @endsection
