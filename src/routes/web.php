@@ -34,9 +34,12 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
 
+    // 管理者権限
     Route::get('/admin/admin', [AdminController::class, 'admin']);
     Route::post('/admin/done', [AdminController::class, 'register']);
+    Route::post('/admin/mail', [AdminController::class, 'notificationMail']);
 
+    // 店舗代表者権限
     Route::get('/editor/admin', [EditorController::class, 'admin']);
     Route::post('/editor/done', [EditorController::class, 'create']);
     Route::post('/editor/update', [EditorController::class, 'update']);

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Shop;
 use App\Models\ShopRepresentative;
+use App\Mail\NotificationMail;
+use Mail;
 use Spatie\Permission\Models\Role;
 use Auth;
 use Carbon\Carbon;
@@ -33,5 +35,15 @@ class AdminController extends Controller
         $user->roles()->attach(2);
 
         return view('admin.done');
+    }
+
+    public function notificationMail(Request $request)
+    {
+        $users = User::doesntHave('roles')->get();
+        $text = $request->text;
+
+        Mail::to($users)->send(new NotificationMail($text));
+
+        return redirect()->back()->with('message','お知らせメールを送信しました');
     }
 }
