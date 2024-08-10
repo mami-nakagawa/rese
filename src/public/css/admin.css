@@ -1,0 +1,219 @@
+#container {
+    padding: 110px 3%;
+}
+
+.admin__content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.register__container {
+    width: 50%;
+    text-align: left;
+    margin-left: 1%;
+}
+
+.mail__container {
+    width: 50%;
+}
+
+.mail__message {
+    margin-left: 2%;
+    line-height: 0;
+    margin-top: 10px;
+}
+
+.register__card {
+    width: 75%;
+    height: auto;
+    margin: 30px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    background-color: #fff;
+    margin-right: 2%;
+}
+
+.mail__card {
+    width: 90%;
+    height: auto;
+    margin: 30px auto;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    background-color: #fff;
+    margin-left: 2%;
+}
+
+.card__content {
+    padding: 5px 15px 20px;
+    text-align: center;
+}
+
+.card__heading {
+    background-color: rgb(45, 88, 229);
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    line-height: 0;
+    padding: 12px 20px;
+    font-size: 18px;
+}
+
+.input__username,
+.input__password,
+.input__email {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid 1px;
+    width: 80%;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.form__input-username::before {
+    content: "";
+    background: url(../img/username.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.form__input-email::before {
+    content: "";
+    background: url(../img/mail.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.form__input-password::before {
+    content: "";
+    background: url(../img/password.png);
+    background-size: cover;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.form__error {
+    color: red;
+    font-size: 14px;
+    padding-left: 30px;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.form__button-submit {
+    padding: 5px 15px;
+    background-color: rgb(45, 88, 229);
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-right: 20px;
+}
+
+.mail-form__button-submit {
+    padding: 5px 15px;
+    background-color: rgb(45, 88, 229);
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 25px;
+    margin-right: 8%;
+}
+
+.form__button {
+    text-align: right;
+}
+
+.admin__ttl-container {
+    text-align: center;
+}
+
+.admin__ttl {
+    font-size: 30px;
+}
+
+.mail-form__group {
+    text-align: left;
+}
+
+.mail__form:first-child {
+    margin-top: 10px;
+}
+
+.mail-form__label {
+    display: inline-block;
+    padding-left: 5%;
+}
+
+.addressee, .subject {
+    display: inline-block;
+    line-height: 5px;
+}
+
+.subject {
+    margin-bottom: 20px;
+}
+
+.text {
+    border-radius: 5px;
+    vertical-align: middle;
+    width: 80%;
+}
+
+/*レスポンシブ*/
+@media screen and (max-width: 768px) {
+    #container {
+        padding: 120px 4%;
+    }
+
+    .admin__ttl {
+        font-size: 26px;
+    }
+
+    .mail__message {
+        padding-left: 3%;
+        margin-bottom: 20px;
+    }
+
+    .admin__content {
+        flex-flow: column;
+    }
+
+    .register__container,
+    .mail__container {
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .register__container {
+        margin-bottom: 50px;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .register__card, .mail__card {
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #container {
+        padding: 130px 1%;
+    }
+
+    .admin__ttl {
+        font-size: 24px;
+    }
+}
