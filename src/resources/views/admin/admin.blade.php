@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
 
 @section('content')
@@ -9,20 +9,14 @@
   <h2 class="admin__ttl">{{ $user->name }}さん</h2>
 </div>
 
-@if(session('message'))
-    <div class="send-mail__message">
-        {{ session('message') }}
-    </div>
-@endif
-
 <div class="admin__content">
   <div class="register__container">
-    <div class="card">
+    <div class="register__card">
       <div class="card__heading">
         <p>店舗代表者の登録</p>
       </div>
       <div class="card__content">
-        <form class="form" action="/admin/done" method="post">
+        <form class="register__form" action="/admin/done" method="post">
           @csrf
           <div class="form__group">
               <div class="form__input-username">
@@ -67,28 +61,33 @@
       </div>
     </div>
   </div>
-  <div class="shop__container">
-      <div class="card">
+  <div class="mail__container">
+    @if(session('message'))
+        <div class="mail__message">
+            {{ session('message') }}
+        </div>
+    @endif
+      <div class="mail__card">
           <div class="card__heading">
               <p>お知らせメールの作成</p>
           </div>
           <div class="card__content">
-              <form class="form" action="/admin/mail" method="post">
+              <form class="mail__form" action="/admin/mail" method="post">
               @csrf
-                  <div class="form__group">
-                      <div class="form__addressee">
-                          <div class="form__label">宛先:</div>
-                          <p class="addressee">利用者</p>
-                      </div>
+                  <div class="mail-form__group">
+                      <div class="mail-form__label">宛先:</div>
+                      <p class="addressee">利用者</p>
                   </div>
-                  <div class="form__group">
-                      <div class="form__text">
-                          <div class="form__label">本文:</div>
-                          <textarea class="text" name="text" rows="10">{{ old('text') }}</textarea>
-                      </div>
+                  <div class="mail-form__group">
+                      <div class="mail-form__label">件名:</div>
+                      <p class="subject">Reseからのお知らせ</p>
+                  </div>
+                  <div class="mail-form__group">
+                      <div class="mail-form__label">本文:</div>
+                      <textarea class="text" name="text" cols ="70" rows="12">{{ old('text') }}</textarea>
                   </div>
                   <div class="form__button">
-                      <button class="form__button-submit" type="submit">送信</button>
+                      <button class="mail-form__button-submit" type="submit">送信</button>
                   </div>
               </form>
           </div>
