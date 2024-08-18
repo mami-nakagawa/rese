@@ -3,6 +3,7 @@
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EditorController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -18,9 +19,11 @@ use Illuminate\Http\Request;
 |
 */
 
+// ゲストでも閲覧可
 Route::get('/', [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
 
+// 会員登録完了
 Route::middleware('verified')->group(function () {
     Route::get('/thanks', [ShopController::class, 'thanks']);
 });
@@ -33,6 +36,11 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
+
+    // 決済
+    Route::get('/payment', [PaymentController::class, 'index']);
+    Route::post('/payment/payment', [PaymentController::class, 'payment']);
+    Route::get('/payment/complete', [PaymentController::class, 'complete']);
 
     // 管理者権限
     Route::get('/admin/admin', [AdminController::class, 'admin']);
