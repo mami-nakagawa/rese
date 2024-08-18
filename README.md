@@ -36,7 +36,7 @@
 - 店舗情報作成・更新と予約情報確認(管理者権限)
 - 店舗画像をストレージに保存
 - 利用者へ予約情報のリマインダー送信
-- 来店時に予約情報を照合できるQRコードを発行
+- 来店時に予約IDを照合できるQRコードを発行
 - 決済機能
 
 ## 使用技術(実行環境)
@@ -78,16 +78,23 @@ mysql:
 
 1. `docker-compose exec php bash`
 2. `composer install`
-3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
-4. .env に以下の環境変数を追加
+3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。
+4. .env で以下smtpサーバとStripeのAPIキーの設定を使用しているアカウント情報の内容に変更
 
 ```text
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=xxxxx@gmail.com
+MAIL_PASSWORD=xxxxx
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=xxxxx@gmail.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+```text
+STRIPE_KEY=xxxxx
+STRIPE_SECRET=xxxxx
 ```
 
 5. アプリケーションキーの作成
@@ -107,6 +114,18 @@ php artisan migrate
 ```bash
 php artisan db:seed
 ```
+
+## テストユーザー
+
+- 管理者
+- 店舗代表者
+- 利用者
+
+# 店舗代表者作成
+
+
+# 店舗情報作成
+
 
 ## 追加機能
 
