@@ -70,6 +70,12 @@
     font-weight: bold;
 }
 
+.reservation-qrcode {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
 .reservation__delete-btn {
     content: '';
     background: url(../img/close.png);
