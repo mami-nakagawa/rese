@@ -1,10 +1,14 @@
 # Rese(飲食店予約サービス)
 
+ゲストは飲食店の検索や詳細表示、ログインすると予約、お気に入り登録、評価投稿等ができるシステム。
+管理者権限では店舗代表者の作成やお知らせメールの送信、店舗代表者権限では店舗情報の作成や予約情報の確認ができる。
+また、予約情報のリマインダー送信や決済も可能。
+
 <img width="730" alt="トップ画面" src="img/top-page.png">
 
 ## 作成した目的
 
-外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたい。
+外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたい為。
 
 ## アプリケーション URL
 
@@ -44,13 +48,13 @@
 
 ## テーブル設計
 
-<img width="730" alt="テーブル" src="img/table1.png”><br>
-<img width="730" alt="テーブル" src="img/table2.png”><br>
-<img width="730" alt="テーブル" src="img/table3.png”>
+<img width="730" alt="テーブル" src="img/table1.png"><br>
+<img width="730" alt="テーブル" src="img/table2.png"><br>
+<img width="730" alt="テーブル" src="img/table3.png">
 
 ## ER 図
 
-<img width="730" alt="ER図" src="img/erd.png”>
+<img width="730" alt="テーブル" src="img/erd.png">
 
 # 環境構築
 
