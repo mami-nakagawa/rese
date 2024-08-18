@@ -1,6 +1,6 @@
 # Rese(飲食店予約サービス)
 
-<img width="730" alt="テーブル" src="{{ asset('img/top-page.png') }}">
+<img width="730" alt="トップ画面" src="img/top-page.png">
 
 ## 作成した目的
 
@@ -44,13 +44,13 @@
 
 ## テーブル設計
 
-<img width="730" alt="テーブル" src="{{ asset('img/table1.png') }}"><br>
-<img width="730" alt="テーブル" src="{{ asset('img/table2.png') }}"><br>
-<img width="730" alt="テーブル" src="{{ asset('img/table3.png') }}">
+<img width="730" alt="テーブル" src="img/table1.png”><br>
+<img width="730" alt="テーブル" src="img/table2.png”><br>
+<img width="730" alt="テーブル" src="img/table3.png”>
 
 ## ER 図
 
-<img width="730" alt="ER図" src="{{ asset('img/erd.png') }}">
+<img width="730" alt="ER図" src="img/erd.png”>
 
 # 環境構築
 
