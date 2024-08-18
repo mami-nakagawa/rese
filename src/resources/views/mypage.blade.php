@@ -51,6 +51,12 @@
             <div class="reservation-update">
                 <a class="reservation-update__btn" href="#{{$reservation->id}}">予約を変更する</a>
             </div>
+            <div class="reservation-qrcode">
+            @if($reservation->date==$today)
+                <p>店舗提示用QRコード</p>
+                {!! QrCode::generate($reservation->id) !!}
+            @endif
+            </div>
             <!--予約変更モーダル-->
             <div class="modal" id="{{$reservation->id}}">
                 <a href="#!" class="modal-overlay"></a>

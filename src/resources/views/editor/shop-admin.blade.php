@@ -224,16 +224,16 @@
         </div>
         <table class="reservation__table">
             <tr class="reservation__row">
+                <th class="reservation__label">予約ID</th>
                 <th class="reservation__label">お名前</th>
-                <th class="reservation__label">メールアドレス</th>
                 <th class="reservation__label">日付</th>
                 <th class="reservation__label">時間</th>
                 <th class="reservation__label">人数</th>
             </tr>
             @foreach($reservations as $reservation)
             <tr class="reservation__row">
+                <td class="reservation__data">{{$reservation->id}}</td>
                 <td class="reservation__data">{{$reservation->user->name}}</td>
-                <td class="reservation__data">{{$reservation->user->email}}</td>
                 <td class="reservation__data">{{$reservation->date}}</td>
                 <td class="reservation__data">{{substr($reservation->time, 0, 5)}}</td>
                 <td class="reservation__data">{{$reservation->number}}人</td>
