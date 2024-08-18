@@ -1,6 +1,6 @@
 # Rese(飲食店予約サービス)
 
-<img width="730" alt="テーブル" src="src/public/img/トップ画面.png">
+<img width="730" alt="テーブル" src="{{ asset('img/top-page.png') }}">
 
 ## 作成した目的
 
@@ -13,36 +13,50 @@
 ## 機能一覧
 
 - 会員登録
+- メール認証
 - ログイン
 - ログアウト
-- 勤務開始
-- 勤務終了
-- 休憩開始
-- 休憩終了
-- 日付別勤怠情報取得
-- ユーザー別勤怠情報取得
+- ユーザー情報取得
+- ユーザー飲食店お気に入り一覧取得
+- ユーザー飲食店予約情報取得
+- 飲食店一覧取得
+- 飲食店エリア・ジャンル・店名検索
+- 飲食店詳細取得
+- 飲食店お気に入り追加
+- 飲食店お気に入り削除
+- 飲食店予約情報追加
+- 飲食店予約情報変更
+- 飲食店予約情報削除
+- 飲食店評価機能
+- 店舗代表者作成・利用者へのお知らせメール送信(管理者権限)
+- 店舗情報作成・更新と予約情報確認(管理者権限)
+- 店舗画像をストレージに保存
+- 利用者へ予約情報のリマインダー送信
+- 来店時に予約情報を照合できるQRコードを発行
+- 決済機能
 
 ## 使用技術(実行環境)
 
 - php 7.4.9
 - Laravel 8.83.8
 - MySQL 8.0.26
+- javascript
 
 ## テーブル設計
 
-<img width="730" alt="テーブル" src="src/public/img/"><br>
-<img width="730" alt="テーブル" src="src/public/img/"><br>
-<img width="730" alt="テーブル" src="src/public/img/">
+<img width="730" alt="テーブル" src="{{ asset('img/table1.png') }}"><br>
+<img width="730" alt="テーブル" src="{{ asset('img/table2.png') }}"><br>
+<img width="730" alt="テーブル" src="{{ asset('img/table3.png') }}">
 
 ## ER 図
 
-<img width="730" alt="ER図" src="src/public/img/erd.png">
+<img width="730" alt="ER図" src="{{ asset('img/erd.png') }}">
 
 # 環境構築
 
 **Docker ビルド**
 
-1. `git clone git@github.com:coachtech-material/laravel-docker-template.git`
+1. `git clone git@github.com:myaa6a/rese.git`
 2. DockerDesktop アプリを立ち上げる
 3. `docker-compose up -d --build`
 
@@ -92,7 +106,6 @@ php artisan db:seed
 
 ## 追加機能
 
-- 打刻画面で打刻時に、成功メッセージまたはエラーメッセージを表示
-- 日付一覧ページの名前をクリックすると、そのユーザーの勤怠表に移動
+- レビュー投稿時に画像を投稿でき、レビュー一覧で画像を表示できる
 
 
