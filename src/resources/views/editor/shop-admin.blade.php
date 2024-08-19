@@ -195,7 +195,7 @@
                             <div class="form__label--file">画像:</div>
                             <div class="shop-img__container">
                                 <p>現在の画像</p>
-                                <img class="shop__img" src="{{ asset('storage/shops/'.$shop_representative->shop->image) }}" alt="shop_image">
+                                <img class="shop__img" src="{{$shop_representative->shop->image}}" alt="shop_image" />
                             </div>
                             <div class="new-file__container">
                                 <p>画像を変更する</p>
