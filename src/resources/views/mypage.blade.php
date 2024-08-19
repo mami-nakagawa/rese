@@ -54,7 +54,12 @@
             <div class="reservation-qrcode">
             @if($reservation->date==$today)
                 <p>店舗提示用QRコード</p>
-                {!! QrCode::generate($reservation->id) !!}
+                @php
+                    $url = route('qrcode', [
+                        'id' => $reservation->id
+                    ]);
+                @endphp
+                {!! QrCode::generate($url) !!}
             @endif
             </div>
             <!--予約変更モーダル-->

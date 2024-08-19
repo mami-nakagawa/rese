@@ -132,7 +132,6 @@ class ShopController extends Controller
         $reservations = Reservation::where('user_id',$user->id)->whereDate('date','>=',$today)->get();
         $favorites = Favorite::where('user_id',$user->id)->get();
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
-        $yesterday = Carbon::yesterday()->format('Y-m-d');
         $visits = Reservation::where('user_id',$user->id)->whereDate('date','<=',$today)->get();
         $reviews = Review::all();
 
@@ -152,5 +151,12 @@ class ShopController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+    public function qrcode($id)
+    {
+        $reservation = Reservation::where('id',$id)->first();
+
+        return view('qrcode-data', compact('reservation'));
     }
 }
