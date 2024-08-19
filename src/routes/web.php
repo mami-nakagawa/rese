@@ -33,6 +33,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
+    Route::get('/qrcode/{id}', [ShopController::class, 'qrcode'])->name('qrcode');
 
     // 管理者権限
     Route::get('/admin/admin', [AdminController::class, 'admin']);
