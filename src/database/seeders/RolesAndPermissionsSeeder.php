@@ -20,18 +20,21 @@ class RolesAndPermissionsSeeder extends Seeder
         $administrator = User::create([
             'name' => '管理者',
             'email' => 'test@admin.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('password'),
             ]);
 
         $shop_representative = User::create([
             'name' => '店舗代表者',
             'email' => 'test@shop.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('password'),
             ]);
 
         $user = User::create([
             'name' => '利用者',
             'email' => 'test@user.com',
+            'email_verified_at' => now(),
             'password' => bcrypt('password'),
             ]);
 
