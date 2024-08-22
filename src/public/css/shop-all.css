@@ -35,7 +35,7 @@
 .search-form__input {
     position: relative;
     display: block;
-    width: 80%;
+    width: 60%;
     padding-left: 5%;
     background-color: #fff;
     border-radius: 0 5px 5px 0;
@@ -58,7 +58,7 @@
 .search-form__select {
     position: relative;
     display: block;
-    width: 20%;
+    width: 22%;
     padding-right: 1%;
     background-color: #fff;
     border-radius: 5px 0 0 5px;
