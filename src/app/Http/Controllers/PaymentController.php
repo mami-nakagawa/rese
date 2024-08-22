@@ -9,34 +9,30 @@ use Stripe\Charge;
 
 class PaymentController extends Controller
 {
-    public function index()
-    {
-        return view('payment.index');
-    }
-
     public function payment(Request $request)
     {
-    try
-    {
-    Stripe::setApiKey(env('STRIPE_SECRET'));
+        try
+        {
+            Stripe::setApiKey(config('services.stripe.secret'));
 
-    $customer = Customer::create(array(
-    'email' => $request->stripeEmail,
-    'source' => $request->stripeToken
-    ));
+            $customer = Customer::create(array(
+                'email' => $request->stripeEmail,
+                'source' => $request->stripeToken
+            ));
 
-    $charge = Charge::create(array(
-    'customer' => $customer->id,
-    'amount' => 2000,
-    'currency' => 'jpy'
-    ));
+            $charge = Charge::create(array(
+                'customer' => $customer->id,
+                'amount' => 1000,
+                'currency' => 'jpy'
+            ));
 
-    return redirect()->route('payment.complete');
-    }
-    catch(Exception $e)
-    {
-    return $e->getMessage();
-    }
+            return redirect()->route('payment.complete');
+        }
+
+        catch(Exception $e)
+        {
+            return $e->getMessage();
+        }
     }
 
     public function complete()

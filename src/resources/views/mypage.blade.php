@@ -11,7 +11,25 @@
 
 <div class="mypage__content">
     <div class="reservation__container">
-        <h3 class="reservation-container__ttl">予約状況</h3>
+        <div class="flex">
+            <h3 class="reservation-container__ttl">予約状況</h3>
+            <div class="payment_container">
+                <form action="/payment" method="POST">
+                    @csrf
+                        <script
+                                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                data-key="{{ config('services.stripe.key') }}"
+                                data-amount="2000"
+                                data-name="Stripe Demo"
+                                data-label="決済をする"
+                                data-description="決済テスト"
+                                data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                data-locale="auto"
+                                data-currency="JPY">
+                        </script>
+                </form>
+            </div>
+        </div>
         @foreach($reservations as $index => $reservation)
         @if((($reservation->date==$today) && ($reservation->time>$now)) || ($reservation->date>$today))
         <div class="reservation__content">

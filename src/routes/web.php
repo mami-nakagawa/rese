@@ -38,9 +38,8 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/review', [ShopController::class, 'review']);
 
     // 決済
-    Route::get('/payment', [PaymentController::class, 'index']);
-    Route::post('/payment/payment', [PaymentController::class, 'payment']);
-    Route::get('/payment/complete', [PaymentController::class, 'complete']);
+    Route::post('/payment', [PaymentController::class, 'payment']);
+    Route::get('/payment/complete', [PaymentController::class, 'complete'])->name('payment.complete');;
 
     // 管理者権限
     Route::get('/admin/admin', [AdminController::class, 'admin']);
