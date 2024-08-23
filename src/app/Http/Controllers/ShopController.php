@@ -128,7 +128,7 @@ class ShopController extends Controller
     {
         $user = Auth::user();
         $today = Carbon::today()->format('Y-m-d');
-        $now = Carbon::now()->format('H:i:s');
+        $now = Carbon::now()->subMinute(10)->format('H:i:s');
         $reservations = Reservation::where('user_id',$user->id)->whereDate('date','>=',$today)->get();
         $favorites = Favorite::where('user_id',$user->id)->get();
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
