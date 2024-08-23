@@ -140,7 +140,11 @@ class ShopController extends Controller
 
     public function review(ReviewRequest $request)
     {
-        $image = $request->file('image')->store('public/reviews');
+        if($request->image){
+            $image = $request->file('image')->store('public/reviews');
+        }else{
+            $image = null;
+        }
 
         Review::create([
             'user_id' => $request->user_id,
