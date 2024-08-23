@@ -22,7 +22,7 @@ class PaymentController extends Controller
 
             $charge = Charge::create(array(
                 'customer' => $customer->id,
-                'amount' => 1000,
+                'amount' => 2000,
                 'currency' => 'jpy'
             ));
 
