@@ -83,3 +83,10 @@
 .form__button {
     text-align: right;
 }
+
+/*レスポンシブ*/
+@media screen and (max-width: 480px) {
+    .card {
+        width: 280px;
+    }
+}
