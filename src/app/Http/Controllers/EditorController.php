@@ -50,6 +50,11 @@ class EditorController extends Controller
             'shop_id' => $shop->id,
         ]);
 
+        return redirect()->route('editor.done');
+    }
+
+    public function done()
+    {
         return view('editor.done');
     }
 

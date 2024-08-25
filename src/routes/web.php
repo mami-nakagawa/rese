@@ -29,7 +29,8 @@ Route::middleware('verified')->group(function () {
 });
 
 Route::middleware('auth', 'verified')->group(function () {
-    Route::post('/done', [ShopController::class, 'reservation']);
+    Route::post('/reservation', [ShopController::class, 'reservation']);
+    Route::get('/done', [ShopController::class, 'done'])->name('done');
     Route::patch('/reservation_update', [ShopController::class, 'reservationUpdate']);
     Route::delete('/reservation_delete', [ShopController::class, 'reservationDestroy']);
     Route::post('/favorite', [ShopController::class, 'favorite']);
@@ -39,16 +40,18 @@ Route::middleware('auth', 'verified')->group(function () {
 
     // 決済
     Route::post('/payment', [PaymentController::class, 'payment']);
-    Route::get('/payment/complete', [PaymentController::class, 'complete'])->name('payment.complete');;
+    Route::get('/payment/complete', [PaymentController::class, 'complete'])->name('payment.complete');
 
     // 管理者権限
     Route::get('/admin/admin', [AdminController::class, 'admin']);
-    Route::post('/admin/done', [AdminController::class, 'register']);
+    Route::post('/admin/register', [AdminController::class, 'register']);
+    Route::get('/admin/done', [AdminController::class, 'done'])->name('admin.done');
     Route::post('/admin/mail', [AdminController::class, 'notificationMail']);
 
     // 店舗代表者権限
     Route::get('/editor/admin', [EditorController::class, 'admin']);
-    Route::post('/editor/done', [EditorController::class, 'create']);
+    Route::post('/editor/create', [EditorController::class, 'create']);
+    Route::get('/editor/done', [EditorController::class, 'done'])->name('editor.done');
     Route::post('/editor/update', [EditorController::class, 'update']);
 });
 

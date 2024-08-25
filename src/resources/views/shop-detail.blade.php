@@ -111,7 +111,7 @@
     <div class="reservation">
         <div class="reservation__content">
         <h2 class="reservation__ttl">予約</h2>
-        <form action="/done" method="post">
+        <form action="/reservation" method="post">
             @csrf
             <div class="reservation__form">
                 <div class="form__group">

@@ -81,6 +81,11 @@ class ShopController extends Controller
             ])
         );
 
+        return redirect()->route('done');
+    }
+
+    public function done()
+    {
         return view('done');
     }
 

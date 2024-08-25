@@ -16,7 +16,7 @@
         <p>店舗代表者の登録</p>
       </div>
       <div class="card__content">
-        <form class="register__form" action="/admin/done" method="post">
+        <form class="register__form" action="/admin/register" method="post">
           @csrf
           <div class="form__group">
               <div class="form__input-username">

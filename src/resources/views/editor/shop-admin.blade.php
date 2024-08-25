@@ -23,7 +23,7 @@
                 <p>店舗情報の登録</p>
             </div>
             <div class="card__content">
-                <form class="form" action="/editor/done" method="post" enctype='multipart/form-data'>
+                <form class="form" action="/editor/create" method="post" enctype='multipart/form-data'>
                 @csrf
                     <div class="form__group">
                         <div class="form__input">
