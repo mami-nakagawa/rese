@@ -12,7 +12,7 @@
 
 ## アプリケーション URL
 
-- http://mnakagawa.com/
+- http://57.180.125.241 (本番環境)
 
 ## 機能一覧
 
@@ -73,7 +73,7 @@ mysql:
 1. `docker-compose exec php bash`
 2. `composer install`
 3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
-4. .env で以下smtpサーバとStripeのAPIキーの設定を使用しているアカウント情報の内容に変更
+4. .env で以下smtpサーバとStripeのAPIキーの設定を、使用しているアカウントの内容に変更
 
 ```text
 MAIL_DRIVER=smtp
