@@ -362,7 +362,7 @@
 /*レスポンシブ*/
 @media screen and (max-width: 768px) {
     #container {
-        padding: 110px 5%;
+        padding: 120px 5%;
     }
 
     .content {
@@ -396,7 +396,7 @@
 
 @media screen and (max-width: 480px) {
     #container {
-            padding: 110px 4%;
+            padding: 140px 4%;
         }
 
     .content {
