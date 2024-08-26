@@ -34,6 +34,11 @@ class AdminController extends Controller
 
         $user->roles()->attach(2);
 
+        return redirect()->route('admin.done');
+    }
+
+    public function done()
+    {
         return view('admin.done');
     }
 
