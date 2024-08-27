@@ -109,6 +109,14 @@ php artisan migrate
 php artisan db:seed
 ```
 
+7. cronの登録
+
+リマインダーの送信を実行する為、以下の内容でcronを登録する
+
+```text
+* * * * * php /path/to/project/artisan schedule:run 1>> /dev/null 2>&1
+```
+
 ## テストユーザー
 
 - 管理者 　　 メールアドレス: test@admin.com, パスワード: password
