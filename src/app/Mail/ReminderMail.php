@@ -28,8 +28,13 @@ class ReminderMail extends Mailable
      */
     public function build()
     {
+        $qrcode_url = route('qrcode', ['id' => $this->reservation->id]);
+        $payment_url = route('payment.index', ['id' => $this->reservation->id]);
+
         return  $this->subject('本日のご予約確認')
             ->view('emails.reminder')
-            ->with('reservation', $this->reservation);
+            ->with(['reservation' => $this->reservation,
+                    'qrcode_url' => $qrcode_url,
+                    'payment_url' => $payment_url]);
     }
 }

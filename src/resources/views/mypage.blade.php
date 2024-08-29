@@ -12,12 +12,12 @@
 <div class="mypage__content">
     <div class="reservation__container">
         <h3 class="reservation-container__ttl">予約状況</h3>
-        @foreach($reservations as $index => $reservation)
+        @foreach($reservations as $reservation)
         @if((($reservation->date==$today) && ($reservation->time>$now)) || ($reservation->date>$today))
         <div class="reservation__content">
             <div class="reservation__flex">
                 <div class="reservation__content-ttl">
-                    <h4>予約{{$index + 1}}</h4>
+                    <h4>予約{{$loop->iteration}}</h4>
                 </div>
                 <div class="reservation__delete">
                     <form class="reservation__delete-form" action="/reservation_delete" method="post">
@@ -47,15 +47,6 @@
                         <td class="reservation__data">{{ $reservation->number }}人</td>
                     </tr>
                 </table>
-            </div>
-            <div class="reservation-qrcode">
-                <p>店舗提示用QRコード</p>
-                @php
-                    $url = route('qrcode', [
-                        'id' => $reservation->id
-                    ]);
-                @endphp
-                {!! QrCode::generate($url) !!}
             </div>
             <div class="reservation-update">
                 <a class="reservation-update__btn" href="#{{$reservation->id}}">予約を変更する</a>
@@ -147,26 +138,8 @@
         @foreach($visits as $visit)
         @if((($visit->date==$today) && ($visit->time<=$now)) || ($visit->date<$today))
         <div class="visit__content">
-            <div class="visit__flex">
-                <div class="visit__content-ttl">
-                    <h4>来店済み</h4>
-                </div>
-                <div class="payment__container">
-                    <form action="/payment" method="POST">
-                        @csrf
-                            <script
-                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                                    data-key="{{ config('services.stripe.key') }}"
-                                    data-amount="2000"
-                                    data-name="Stripe Demo"
-                                    data-label="決済をする"
-                                    data-description="決済テスト"
-                                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-                                    data-locale="auto"
-                                    data-currency="JPY">
-                            </script>
-                    </form>
-                </div>
+            <div class="visit__content-ttl">
+                <h4>来店済み</h4>
             </div>
             <div class="reservation__content-table">
                 <table class="reservation__table">

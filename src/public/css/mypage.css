@@ -70,12 +70,6 @@
     font-weight: bold;
 }
 
-.reservation-qrcode {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
 .reservation__delete-btn {
     content: '';
     background: url(../img/close.png);
@@ -116,12 +110,6 @@
     border-radius: 5px;
     box-shadow: 3px 3px 5px rgb(164, 163, 163);
     padding: 10px 30px;
-}
-
-.visit__flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .review {

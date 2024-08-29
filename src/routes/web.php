@@ -37,9 +37,11 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
     Route::post('/review', [ShopController::class, 'review']);
+    Route::get('/qrcode/{id}', [ShopController::class, 'qrcode'])->name('qrcode');
 
     // 決済
-    Route::post('/payment', [PaymentController::class, 'payment']);
+    Route::get('/payment/index/{id}', [PaymentController::class, 'index'])->name('payment.index');
+    Route::post('/payment/payment', [PaymentController::class, 'payment']);
     Route::get('/payment/complete', [PaymentController::class, 'complete'])->name('payment.complete');
 
     // 管理者権限
@@ -55,7 +57,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/editor/update', [EditorController::class, 'update']);
 });
 
-// QRコード
-Route::get('/qrcode/{id}', [ShopController::class, 'qrcode'])->name('qrcode');
+// QRコード読み取り
+Route::get('/qrcode/scan/{id}', [ShopController::class, 'scan'])->name('qrcode.scan');
 
 

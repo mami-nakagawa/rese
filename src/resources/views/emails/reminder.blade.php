@@ -11,8 +11,10 @@
     <p>[予約日] {{ $reservation->date }}</p>
     <p>[予約時間] {{ substr($reservation->time, 0, 5) }}</p>
     <p>[予約人数] {{ $reservation->number }}人</p><br>
-    <p>ご来店の際は、マイページの店舗提示用QRコードをご提示下さい。</p>
-    <p>{{ config('app.url') }}/mypage</p><br>
+    <p>ご来店の際は、以下URLの店舗提示用QRコードをご提示下さい。</p>
+    <p>{{$qrcode_url}}</p><br>
+    <p>決済は、以下URLからお願い致します。</p>
+    <p>{{$payment_url}}</p><br>
     <p>{{ $reservation->user->name }}様のご来店をお待ちしております。</p>
     <p>Rese</p>
 </body>
