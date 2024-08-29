@@ -1,0 +1,12 @@
+.payment__inner {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.payment__text {
+    font-size: 18px;
+}
+
+.payment__btn {
+    margin-top: 50px;
+}

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
@@ -9,6 +10,13 @@ use Stripe\Charge;
 
 class PaymentController extends Controller
 {
+    public function index($id)
+    {
+        $reservation = Reservation::where('id',$id)->first();
+
+        return view('payment', compact('reservation'));
+    }
+
     public function payment(Request $request)
     {
         try
