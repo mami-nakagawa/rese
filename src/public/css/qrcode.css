@@ -1,0 +1,12 @@
+.qrcode__inner {
+    text-align: center;
+    margin-top: 130px;
+}
+
+.text {
+    font-size: 20px;
+}
+
+.qrcode {
+    margin-top: 50px;
+}
