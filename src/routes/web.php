@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 
 // ゲストでも閲覧可
 Route::get('/', [ShopController::class, 'index']);
-Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 // 会員登録完了
 Route::middleware('verified')->group(function () {

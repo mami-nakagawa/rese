@@ -88,9 +88,8 @@
                 <p class="card__content-tag-item">#{{$shop->genre->name}}</p>
             </div>
             <div class="card__content-btn">
-                <form class="shop-detail__form" action="/detail/{shop_id}" method="get">
+                <form class="shop-detail__form" action="{{ route('detail', ['shop_id' => $shop->id]) }}" method="get">
                 @csrf
-                    <input class="shop-detail__input" type="hidden" name="id" value="{{$shop->id}}">
                     <button class="shop-detail__btn" type="submit">詳しくみる</button>
                 </form>
                 <div class="favorite">

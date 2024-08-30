@@ -307,9 +307,8 @@
                         </p>
                     </div>
                     <div class="card__content-btn">
-                        <form class="shop-detail__form" action="/detail/{shop_id}" method="get">
+                        <form class="shop-detail__form" action="{{ route('detail', ['shop_id' => $favorite->shop->id]) }}" method="get">
                         @csrf
-                            <input class="shop-detail__input" type="hidden" name="id" value="{{ $favorite->shop->id }}">
                             <button class="shop-detail__btn" type="submit">詳しくみる</button>
                         </form>
                         <form class="favorite__form" action="/favorite_delete" method="post">

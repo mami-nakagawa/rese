@@ -56,15 +56,15 @@ class ShopController extends Controller
         return view('shop-all', compact('areas', 'genres', 'user', 'shops', 'reviews'));
     }
 
-    public function detail(Request $request)
+    public function detail($shop_id)
     {
         $user = Auth::user();
-        $shop = Shop::find($request->id);
+        $shop = Shop::where('id',$shop_id)->first();
         $tomorrow = Carbon::tomorrow()->format('Y-m-d');
         $reviews = Review::all();
-        $star_avg = Review::where('shop_id',$shop->id)->avg('star');
+        $star_avg = Review::where('shop_id',$shop_id)->avg('star');
         $star_avg = substr($star_avg, 0, 4);
-        $review_count = Review::where('shop_id',$shop->id)->count();
+        $review_count = Review::where('shop_id',$shop_id)->count();
 
         return view('shop-detail', compact('user', 'shop', 'tomorrow', 'reviews', 'star_avg', 'review_count'));
     }
