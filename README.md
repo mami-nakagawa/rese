@@ -61,7 +61,7 @@
 > _Mac の M1・M2 チップの PC の場合、`no matching manifest for linux/arm64/v8 in the manifest list entries`のメッセージが表示されビルドができないことがあります。
 > エラーが発生する場合は、docker-compose.yml ファイルの「mysql」内に「platform」の項目を追加で記載してください_
 
-```bash
+```text
 mysql:
     platform: linux/x86_64(この文追加)
     image: mysql:8.0.26
@@ -109,9 +109,12 @@ php artisan migrate
 php artisan db:seed
 ```
 
-7. cronの登録
+**cronの登録**
 
-リマインダーの送信を実行する為、以下の内容でcronを登録する
+リマインダーの送信を実行する為、cronを登録する
+
+1. `crontab -e`
+2. 以下の内容で登録する
 
 ```text
 * * * * * php /path/to/project/artisan schedule:run 1>> /dev/null 2>&1
