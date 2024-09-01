@@ -44,6 +44,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/editor/admin', [EditorController::class, 'admin']);
     Route::post('/editor/done', [EditorController::class, 'create']);
     Route::post('/editor/update', [EditorController::class, 'update']);
+    Route::get('/editor/scan', [EditorController::class, 'scan']);
 });
 
 

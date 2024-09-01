@@ -219,8 +219,11 @@
         </div>
     </div>
     <div class="check-reservation__container">
-        <div class="check-reservation__ttl">
-            <p>予約情報の確認</p>
+        <div class="check-reservation__flex">
+            <div class="check-reservation__ttl">
+                <p>予約情報の確認</p>
+            </div>
+            <a class="scan__btn" href="/editor/scan">QRコード読み取り</a>
         </div>
         <table class="reservation__table">
             <tr class="reservation__row">

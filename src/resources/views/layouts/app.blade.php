@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script>
+    jsQR(...);
+    </script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
