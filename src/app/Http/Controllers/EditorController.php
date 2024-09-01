@@ -36,14 +36,14 @@ class EditorController extends Controller
     {
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('/', $image);
-        $image_url = Storage::disk('s3')->url($path);
+        $image = Storage::disk('s3')->url($path);
 
         $shop = Shop::create([
             'name' => $request->name,
             'area_id' => $request->area_id,
             'genre_id' => $request->genre_id,
             'summary' => $request->summary,
-            'image' => $image_url,
+            'image' => $image,
         ]);
 
         $user = Auth::user();
@@ -69,7 +69,7 @@ class EditorController extends Controller
         if($request->file('image')){
             $image = $request->file('image');
             $path = Storage::disk('s3')->putFile('/', $image);
-            $image_url = Storage::disk('s3')->url($path);
+            $image = Storage::disk('s3')->url($path);
         } else {
             $image = $old_image;
         }
@@ -79,7 +79,7 @@ class EditorController extends Controller
             'area_id' => $request->area_id,
             'genre_id' => $request->genre_id,
             'summary' => $request->summary,
-            'image' => $image_url,
+            'image' => $image,
         ]);
 
         return redirect()->back()->with('message','店舗情報を更新しました');
