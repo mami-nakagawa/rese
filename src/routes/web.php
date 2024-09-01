@@ -56,9 +56,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/editor/done', [EditorController::class, 'done'])->name('editor.done');
     Route::post('/editor/update', [EditorController::class, 'update']);
     Route::get('/editor/scan', [EditorController::class, 'scan']);
+    Route::get('/editor/confirm/{id}', [EditorController::class, 'confirm'])->name('editor.confirm');
 });
-
-// QRコード読み取り
-Route::get('/qrcode/scan/{id}', [ShopController::class, 'scan'])->name('qrcode.scan');
 
 

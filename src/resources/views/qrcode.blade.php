@@ -9,7 +9,7 @@
     <p class="text">店舗提示用QRコード</p>
     <div class="qrcode">
     @php
-        $url = route('qrcode.scan', [
+        $url = route('editor.confirm', [
             'id' => $reservation->id
         ]);
     @endphp

@@ -168,11 +168,4 @@ class ShopController extends Controller
 
         return view('qrcode', compact('reservation'));
     }
-
-    public function scan($id)
-    {
-        $reservation = Reservation::where('id',$id)->first();
-
-        return view('qrcode-data', compact('reservation'));
-    }
 }

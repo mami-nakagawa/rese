@@ -85,4 +85,11 @@ class EditorController extends Controller
     {
         return view('editor.scan');
     }
+
+    public function confirm($id)
+    {
+        $reservation = Reservation::where('id',$id)->first();
+
+        return view('editor.qrcode-data', compact('reservation'));
+    }
 }
