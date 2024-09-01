@@ -73,7 +73,7 @@ mysql:
 1. `docker-compose exec php bash`
 2. `composer install`
 3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
-4. .env で以下smtpサーバとStripeのAPIキーの設定を、使用しているアカウントの内容に変更
+4. .env で以下smtpサーバ、AWS、Stripeの設定を、使用しているアカウントの内容に変更
 
 ```text
 MAIL_DRIVER=smtp
@@ -87,8 +87,15 @@ MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 ```text
-STRIPE_KEY=xxxxx
-STRIPE_SECRET=xxxxx
+AWS_ACCESS_KEY_ID=AWSで作成したS3用ユーザーのAccess key ID
+AWS_SECRET_ACCESS_KEY=AWSで作成したS3用ユーザーのSecret access key
+AWS_DEFAULT_REGION=ap-northeast-1(東京リージョンの場合)
+AWS_BUCKET=作成したバケット名
+```
+
+```text
+STRIPE_KEY=公開可能キー
+STRIPE_SECRET=シークレットキー
 ```
 
 5. アプリケーションキーの作成
