@@ -80,4 +80,9 @@ class EditorController extends Controller
 
         return redirect()->back()->with('message','店舗情報を更新しました');
     }
+
+    public function scan()
+    {
+        return view('editor.scan');
+    }
 }

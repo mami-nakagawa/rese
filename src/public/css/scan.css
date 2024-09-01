@@ -1,0 +1,9 @@
+.scan__inner {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+}
+
+#canvas {
+    width: 100%;
+}

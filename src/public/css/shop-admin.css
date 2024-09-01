@@ -149,11 +149,28 @@
     padding-left: 30px;
 }
 
+.check-reservation__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 .check-reservation__ttl {
     font-size: 20px;
     font-weight: bold;
     line-height: 0;
     margin-bottom: 35px;
+}
+
+.scan__btn {
+    padding: 8px 20px;
+    background-color: rgb(45, 88, 229);
+    color: #FFF;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
 }
 
 .check-reservation__content {
