@@ -15,6 +15,7 @@ use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\ReviewRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -146,7 +147,10 @@ class ShopController extends Controller
     public function review(ReviewRequest $request)
     {
         if($request->image){
-            $image = $request->file('image')->store('public/reviews');
+            $image = $request->file('image');
+            $path = Storage::disk('s3')->putFile('/', $image);
+            $image = Storage::disk('s3')->url($path);
+
         }else{
             $image = null;
         }
@@ -156,7 +160,7 @@ class ShopController extends Controller
             'shop_id' => $request->shop_id,
             'star' => $request->star,
             'comment' => $request->comment,
-            'image' => basename($image),
+            'image' => $image,
         ]);
 
         return redirect()->back();

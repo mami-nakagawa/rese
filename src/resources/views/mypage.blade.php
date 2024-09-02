@@ -361,7 +361,7 @@
                                 <tr class="modal-review-all__row">
                                     <th class="modal-review-all__label">画像</th>
                                     <td class="modal-review-all__data">
-                                        <img class="review__img" src="{{ asset('storage/reviews/'.$review->image) }}" alt="review_image" />
+                                        <img class="review__img" src="{{ $review->image }}" alt="review_image" />
                                     </td>
                                 </tr>
                                 @endif
