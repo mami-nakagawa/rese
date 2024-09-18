@@ -51,7 +51,7 @@
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">
-                                @error('area')
+                                @error('area_id')
                                 {{ $message }}
                                 @enderror
                             </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">
-                                @error('area')
+                                @error('genre_id')
                                 {{ $message }}
                                 @enderror
                             </div>
@@ -153,7 +153,7 @@
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">
-                                @error('area')
+                                @error('area_id')
                                 {{ $message }}
                                 @enderror
                             </div>
@@ -171,7 +171,7 @@
                         </div>
                         <div class="form__error__container">
                             <div class="form__error">
-                                @error('area')
+                                @error('genre_id')
                                 {{ $message }}
                                 @enderror
                             </div>
@@ -200,13 +200,6 @@
                             <div class="new-file__container">
                                 <p>画像を変更する</p>
                                 <input class="input new__file" type="file" name="image"/>
-                            </div>
-                        </div>
-                        <div class="form__error__container">
-                            <div class="form__error">
-                                @error('image')
-                                {{ $message }}
-                                @enderror
                             </div>
                         </div>
                     </div>

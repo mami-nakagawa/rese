@@ -119,6 +119,11 @@
     font-size: 0.9vw;
 }
 
+.form__error__container {
+    padding-left: 55px;
+    margin-top: 5px;
+}
+
 .form__error {
     color: red;
     font-size: 14px;

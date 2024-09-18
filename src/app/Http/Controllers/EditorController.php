@@ -10,6 +10,8 @@ use App\Models\Reservation;
 use App\Models\ShopRepresentative;
 use Auth;
 use Carbon\Carbon;
+use App\Http\Requests\ShopRegisterRequest;
+use App\Http\Requests\ShopUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -32,7 +34,7 @@ class EditorController extends Controller
         return view('editor.shop-admin', compact('user', 'areas', 'genres', 'shop_representative', 'reservations'));
     }
 
-    public function create(Request $request)
+    public function create(ShopRegisterRequest $request)
     {
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('/', $image);
@@ -61,7 +63,7 @@ class EditorController extends Controller
         return view('editor.done');
     }
 
-    public function update(Request $request)
+    public function update(ShopUpdateRequest $request)
     {
         $shop = Shop::find($request->id);
         $old_image = $shop->image;
