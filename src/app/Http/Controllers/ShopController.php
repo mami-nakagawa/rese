@@ -70,66 +70,6 @@ class ShopController extends Controller
         return view('shop-detail', compact('user', 'shop', 'tomorrow', 'reviews', 'star_avg', 'review_count'));
     }
 
-    public function reservation(ReservationRequest $request)
-    {
-        Reservation::create(
-            $request->only([
-                'user_id',
-                'shop_id',
-                'date',
-                'time',
-                'number',
-            ])
-        );
-
-        return redirect()->route('done');
-    }
-
-    public function done()
-    {
-        return view('done');
-    }
-
-    public function reservationUpdate(ReservationRequest $request)
-    {
-        $reservation = Reservation::find($request->id);
-        $reservation->update(
-            $request->only([
-                'date',
-                'time',
-                'number',
-            ])
-        );
-
-        return redirect()->back();
-    }
-
-    public function reservationDestroy(Request $request)
-    {
-        Reservation::find($request->id)->delete();
-        return redirect()->back();
-    }
-
-    public function favorite(Request $request)
-    {
-        $user = Auth::user();
-
-        Favorite::create([
-            'user_id' => $user->id,
-            'shop_id' => $request->shop_id,
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function favoriteDestroy(Request $request)
-    {
-        $user = Auth::user();
-        favorite::where('shop_id',$request->shop_id)->where('user_id',$user->id)->delete();
-
-        return redirect()->back();
-    }
-
     public function mypage()
     {
         $user = Auth::user();
@@ -142,34 +82,5 @@ class ShopController extends Controller
         $reviews = Review::all();
 
         return view('mypage', compact('user', 'reservations', 'favorites', 'tomorrow', 'visits', 'today', 'now', 'reviews'));
-    }
-
-    public function review(ReviewRequest $request)
-    {
-        if($request->image){
-            $image = $request->file('image');
-            $path = Storage::disk('s3')->putFile('/', $image);
-            $image = Storage::disk('s3')->url($path);
-
-        }else{
-            $image = null;
-        }
-
-        Review::create([
-            'user_id' => $request->user_id,
-            'shop_id' => $request->shop_id,
-            'star' => $request->star,
-            'comment' => $request->comment,
-            'image' => $image,
-        ]);
-
-        return redirect()->back();
-    }
-
-    public function qrcode($id)
-    {
-        $reservation = Reservation::where('id',$id)->first();
-
-        return view('qrcode', compact('reservation'));
     }
 }

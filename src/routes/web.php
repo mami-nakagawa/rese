@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EditorController;
 use App\Http\Controllers\PaymentController;
@@ -29,15 +32,15 @@ Route::middleware('verified')->group(function () {
 });
 
 Route::middleware('auth', 'verified')->group(function () {
-    Route::post('/reservation', [ShopController::class, 'reservation']);
-    Route::get('/done', [ShopController::class, 'done'])->name('done');
-    Route::patch('/reservation_update', [ShopController::class, 'reservationUpdate']);
-    Route::delete('/reservation_delete', [ShopController::class, 'reservationDestroy']);
-    Route::post('/favorite', [ShopController::class, 'favorite']);
-    Route::delete('/favorite_delete', [ShopController::class, 'favoriteDestroy']);
+    Route::post('/reservation', [ReservationController::class, 'reservation']);
+    Route::get('/done', [ReservationController::class, 'done'])->name('done');
+    Route::patch('/reservation_update', [ReservationController::class, 'reservationUpdate']);
+    Route::delete('/reservation_delete', [ReservationController::class, 'reservationDestroy']);
+    Route::post('/favorite', [FavoriteController::class, 'favorite']);
+    Route::delete('/favorite_delete', [FavoriteController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
-    Route::post('/review', [ShopController::class, 'review']);
-    Route::get('/qrcode/{id}', [ShopController::class, 'qrcode'])->name('qrcode');
+    Route::post('/review', [ReviewController::class, 'review']);
+    Route::get('/qrcode/{id}', [ReservationController::class, 'qrcode'])->name('qrcode');
 
     // 決済
     Route::get('/payment/index/{id}', [PaymentController::class, 'index'])->name('payment.index');
