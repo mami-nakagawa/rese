@@ -25,7 +25,8 @@ class ReviewRequest extends FormRequest
     {
         return [
             'star' => 'required',
-            'comment' => 'required|min:10',
+            'comment' => 'required|max:400',
+            'image' => ['mimes:jpeg,png', 'mimetypes:image/jpeg,image/png']
         ];
     }
 
@@ -33,8 +34,10 @@ class ReviewRequest extends FormRequest
     {
         return [
             'star.required' => '評価を選択してください',
-            'comment.required' => 'コメントを入力してください',
-            'comment.min' => 'コメントは10文字以上で入力してください',
+            'comment.required' => '口コミを入力してください',
+            'comment.max' => '口コミは400文字以内で入力してください',
+            'image.mines' => 'jpeg、pngのみアップロード可能です',
+            'image.minetypes' => 'jpeg、pngのみアップロード可能です',
         ];
     }
 }

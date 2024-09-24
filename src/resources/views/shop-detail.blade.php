@@ -54,6 +54,68 @@
         <div class="shop-detail__text">
             <p class="detail__text">{{$shop->summary}}</p>
         </div>
+        <div class="shop-detail__review">
+            @if (Auth::check())
+                @role('admin|editor')
+                <a class="review-all__btn" href="#{{$shop->id}}">全ての口コミ情報</a>
+                @else
+                    @php
+                        $review = App\Models\Review::where('user_id',$user->id)->where('shop_id',$shop->id)->first();
+                    @endphp
+                    @if(empty($review))
+                    <form class="review-btn__form" action="{{ route('review', ['shop_id' => $shop->id]) }}" method="get">
+                    @csrf
+                        <button class="review__btn" type="submit">口コミを投稿する</button>
+                    </form>
+                    @else
+                    <a class="review-all__btn" href="#{{$shop->id}}">全ての口コミ情報</a>
+                    <div class="border"></div>
+                    <div class="user-review">
+                        <div class="review-flex">
+                            <div class="review-update">
+                                <form class="review-update__form" action="{{ route('review', ['shop_id' => $shop->id]) }}"  method="get">
+                            @csrf
+                                    <button class="review-update__btn" type="submit">口コミを編集</button>
+                                </form>
+                            </div>
+                            <div class="review__delete">
+                                <form class="review__delete-form" action="/review/delete" method="post">
+                                @method('DELETE')
+                                @csrf
+                                    <input class="review__delete-input" type="hidden" name="id" value="{{$review->id}}">
+                                    <button class="review-delete__btn" type="submit">口コミを削除</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="user-review__star">
+                        @if($review->star == 1)
+                            <span class="blue-star">★ </span><span class="gray-star">★ ★ ★ ★</span>
+                        @elseif($review->star == 2)
+                            <span class="blue-star">★ ★ </span><span class="gray-star">★ ★ ★</span>
+                        @elseif($review->star == 3)
+                            <span class="blue-star">★ ★ ★ </span><span class="gray-star">★ ★</span>
+                        @elseif($review->star == 4)
+                            <span class="blue-star">★ ★ ★ ★ </span><span class="gray-star">★</span>
+                        @elseif($review->star == 5)
+                            <span class="blue-star">★ ★ ★ ★ ★ </span>
+                        @endif
+                        </div>
+                        <div class="user-review__comment">
+                            <p>{{$review->comment}}</p>
+                        </div>
+                        @if($review->image)
+                            <div class="user-review__image">
+                                <img class="review__img" src="{{ $review->image }}" alt="review_image" />
+                            </div>
+                        @endif
+                    </div>
+                    <div class="border"></div>
+                    @endif
+                @endrole
+            @else
+            <a class="review-all__btn" href="#{{$shop->id}}">全ての口コミ情報</a>
+            @endif
+        </div>
 
         <!--レビュ一覧ーモーダル-->
         <div class="modal" id="{{$shop->id}}">
@@ -64,6 +126,16 @@
                     @foreach($reviews as $review)
                     @if($review->shop_id == $shop->id)
                     <div class="review__content">
+                        @role('admin')
+                            <div class="modal-review__delete">
+                                <form class="modal-review__delete-form" action="/review/delete" method="post">
+                                @method('DELETE')
+                                @csrf
+                                    <input class="modal-review__delete-input" type="hidden" name="id" value="{{$review->id}}">
+                                    <button class="modal-review-delete__btn" type="submit">口コミを削除</button>
+                                </form>
+                            </div>
+                        @endrole
                         <table class="modal-review-all__table">
                             <tr class="modal-review-all__row">
                                 <th class="modal-review__label">投稿者</th>
