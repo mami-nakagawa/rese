@@ -125,6 +125,16 @@
                 @foreach($reviews as $review)
                 @if($review->shop_id == $shop->id)
                 <div class="review__content">
+                    @role('admin')
+                        <div class="modal-review__delete">
+                            <form class="modal-review__delete-form" action="/review/delete" method="post">
+                            @method('DELETE')
+                            @csrf
+                                <input class="modal-review__delete-input" type="hidden" name="id" value="{{$review->id}}">
+                                <button class="modal-review-delete__btn" type="submit">口コミを削除</button>
+                            </form>
+                        </div>
+                    @endrole
                     <table class="modal-review-all__table">
                         <tr class="modal-review-all__row">
                             <th class="modal-review__label">投稿者</th>

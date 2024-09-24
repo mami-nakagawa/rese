@@ -39,7 +39,10 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/favorite', [FavoriteController::class, 'favorite']);
     Route::delete('/favorite_delete', [FavoriteController::class, 'favoriteDestroy']);
     Route::get('/mypage', [ShopController::class, 'mypage']);
-    Route::post('/review', [ReviewController::class, 'review']);
+    Route::get('/review/{shop_id}', [ReviewController::class, 'index'])->name('review');
+    Route::post('/review/create', [ReviewController::class, 'create']);
+    Route::patch('/review/update', [ReviewController::class, 'update']);
+    Route::delete('/review/delete', [ReviewController::class, 'destroy']);
     Route::get('/qrcode/{id}', [ReservationController::class, 'qrcode'])->name('qrcode');
 
     // 決済
