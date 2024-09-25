@@ -127,6 +127,7 @@
             </div>
             <div class="card__content">
                 <form class="form" action="/editor/update" method="post" enctype='multipart/form-data'>
+                @method('PATCH')
                 @csrf
                     <div class="form__group">
                         <div class="form__input">
