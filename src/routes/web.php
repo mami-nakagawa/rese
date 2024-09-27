@@ -60,7 +60,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/editor/admin', [EditorController::class, 'admin']);
     Route::post('/editor/create', [EditorController::class, 'create']);
     Route::get('/editor/done', [EditorController::class, 'done'])->name('editor.done');
-    Route::post('/editor/update', [EditorController::class, 'update']);
+    Route::patch('/editor/update', [EditorController::class, 'update']);
     Route::get('/editor/scan', [EditorController::class, 'scan']);
     Route::get('/editor/confirm/{id}', [EditorController::class, 'confirm'])->name('editor.confirm');
 });
