@@ -36,8 +36,8 @@ class ReviewRequest extends FormRequest
             'star.required' => '評価を選択してください',
             'comment.required' => '口コミを入力してください',
             'comment.max' => '口コミは400文字以内で入力してください',
-            'image.mines' => 'jpeg、pngのみアップロード可能です',
-            'image.minetypes' => 'jpeg、pngのみアップロード可能です',
+            'image.mines' => 'jpeg、png形式のみアップロード可能です',
+            'image.minetypes' => 'jpeg、png形式のみアップロード可能です',
         ];
     }
 }
