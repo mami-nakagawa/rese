@@ -182,8 +182,19 @@
     transition: transform 1s ease, opacity 0.9s ease;
 }
 
+.header__bar {
+    display: flex;
+    justify-content: right;
+    width: 75%;
+}
+
+.header__sort {
+    width: 18%;
+    margin-right: 4%;
+}
+
 .header__search {
-    width: 50%;
+    width: 67%;
 }
 
 body {

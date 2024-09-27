@@ -198,8 +198,6 @@
                                 <div id="btnInputFile"><span></span></div>
                             </div>
                         </div>
-                        <div id="">
-                    </div>
                     </div>
                     <div class="form__error__container">
                         <div class="form__error">
@@ -262,7 +260,13 @@
                     </div>
                 </div>
                 <div class="form__group">
-                    <p class="form__label">画像の追加</p>
+                    <div class="review__flex">
+                        <p class="form__label">画像の追加</p>
+                        <p class="old-review-img__ttl">現在の画像</p>
+                        <div class="old-review-img__container">
+                            <img class="old-review__img" src="{{$user_review->image}}" alt="shop_image" />
+                        </div>
+                    </div>
                     <div id="upFileWrap">
                         <div id="inputFile">
                             <p id="dropArea">クリックして写真を追加<br><span class="dropArea">またはドラッグアンドドロップ</span></p>
@@ -271,9 +275,6 @@
                                 <div id="btnInputFile"><span></span></div>
                             </div>
                         </div>
-                        <div id="">
-                    </div>
-                    </div>
                     <div class="form__error__container">
                         <div class="form__error">
                             @error('image')

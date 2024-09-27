@@ -4,13 +4,35 @@
 <link rel="stylesheet" href="{{ asset('css/shop-all.css')}}">
 @endsection
 
+@section('shop_sort')
+@if (Auth::check())
+    @role('admin|editor')
+    <div></div>
+    @else
+    <div class="shop__sort">
+        <form id="sort__form">
+            @csrf
+            <div class="sort-form__select">
+                <select name="sort" id="sort__select">
+                    <option selected hidden>並び替え：評価高/低</option>
+                    <option value="1" @if(request('sort')==1) selected @endif>ランダム</option>
+                    <option value="2" @if(request('sort')==2) selected @endif>評価が高い順</option>
+                    <option value="3" @if(request('sort')==3) selected @endif>評価が低い順</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    @endrole
+@endif
+@endsection
+
 @section('shop_search')
 <div class="shop__search">
-    <form class="search-form" action="/" method="get">
+    <form id="search__form" class="search-form">
         @csrf
         <div class="search-form__select">
-            <select class="search-form__area-select" name="area">
-                <option disabled selected>All area</option>
+            <select class="search-form__area-select" name="area" id="area__select">
+                <option value="all" selected>All area</option>
                 @foreach($areas as $area)
                 <option value="{{ $area->id }}" @if(request('area')==$area->id) selected @endif>{{$area->name}}
                 </option>
@@ -18,8 +40,8 @@
             </select>
         </div>
         <div class="search-form__select">
-            <select class="search-form__genre-select" name="genre">
-                <option disabled selected>All genre</option>
+            <select class="search-form__genre-select" name="genre" id="genre__select">
+                <option value="all" selected>All genre</option>
                 @foreach($genres as $genre)
                 <option value="{{ $genre->id }}" @if(request('genre')==$genre->id) selected @endif>{{$genre->name}}
                 </option>
@@ -29,7 +51,6 @@
         <div class="search-form__input">
             <input class="search-form__keyword" type="text" name="keyword" id="search-text" placeholder="Search ..." value="{{request('keyword')}}">
         </div>
-        <input class="search-form__btn" type="submit" value="検索">
     </form>
 </div>
 @endsection
@@ -183,4 +204,33 @@
         <div class="card dummy"></div>
     @endfor
 </div>
+@endsection
+
+@section('script')
+<!--ソート-->
+<script>
+    $(function() {
+        $('#sort__select').change(function () {
+            $('#sort__form').submit();
+        });
+    });
+
+    $(function() {
+        $('#area__select').change(function () {
+            $('#search__form').submit();
+        });
+    });
+
+    $(function() {
+        $('#genre__select').change(function () {
+            $('#search__form').submit();
+        });
+    });
+
+    $(function() {
+        $('#search-text').change(function () {
+            $('#search__form').submit();
+        });
+    });
+</script>
 @endsection

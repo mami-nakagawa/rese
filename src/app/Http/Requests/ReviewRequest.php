@@ -36,10 +36,13 @@ class ReviewRequest extends FormRequest
             'star.required' => '評価を選択してください',
             'comment.required' => '口コミを入力してください',
             'comment.max' => '口コミは400文字以内で入力してください',
+
+            'image.mines' => 'jpeg、png形式のみアップロード可能です',
+            'image.minetypes' => 'jpeg、png形式のみアップロード可能です',
             'comment.string' => '口コミは文字列で入力してください',
             'image.file' => '画像は、ファイル形式でなければいけません',
-            'image.mines' => '画像には、jpegまたはpngファイルを指定してください',
-            'image.mines' => '画像には、jpegまたはpngファイルを指定してください',
+            'image.mines' => '画像には、jpegまたはpng形式を指定してください',
+            'image.mines' => '画像には、jpegまたはpng形式を指定してください',
         ];
     }
 }
