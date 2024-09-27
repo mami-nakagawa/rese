@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     @yield('css')
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
     <script>
     jsQR(...);
@@ -68,8 +69,13 @@
             <a class="header__logo" href="/">
                 Rese
             </a>
-            <div class="header__search">
-                @yield('shop_search')
+            <div class="header__bar">
+                <div class="header__sort">
+                    @yield('shop_sort')
+                </div>
+                <div class="header__search">
+                    @yield('shop_search')
+                </div>
             </div>
         </div>
     </header>

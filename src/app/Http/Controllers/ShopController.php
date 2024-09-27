@@ -29,6 +29,22 @@ class ShopController extends Controller
 
     public function index(Request $request)
     {
+        $user = Auth::user();
+        $shops = Shop::all();
+        $reviews = Review::all();
+        foreach($shops as $shop) {
+            $review = Review::where('shop_id',$shop->id)->first();
+            if($review) {
+                $star_avg = Review::where('shop_id',$shop->id)->avg('star');
+            } else {
+                $star_avg = 0;
+            }
+            $shop->update([
+                'star_avg' => $star_avg,
+            ]);
+        }
+
+        // 検索
         $areas = Area::all();
         $genres = Genre::all();
         $area = $request->input('area');
@@ -37,11 +53,15 @@ class ShopController extends Controller
 
         $query = Shop::query();
 
-        if(!empty($area)) {
+        if($area=="all" || null) {
+            $query->get();
+        } else {
             $query->where('area_id', 'LIKE', $area);
         }
 
-        if(!empty($genre)) {
+        if($genre=="all" || null) {
+            $query->get();
+        } else {
             $query->where('genre_id', 'LIKE', $genre);
         }
 
@@ -51,10 +71,30 @@ class ShopController extends Controller
         }
 
         $shops = $query->get();
-        $user = Auth::user();
-        $reviews = Review::all();
 
-        return view('shop-all', compact('areas', 'genres', 'user', 'shops', 'reviews'));
+        // ソート
+        $sort = $request->sort;
+
+        switch ($sort) {
+            case '1':
+                // ランダム
+                $shops = $query->inRandomOrder()->get();
+                break;
+            case '2':
+                // 評価が高い順
+                $shops = $query->orderBy('star_avg', 'desc')->get();
+                break;
+            case '3':
+                // 評価が低い順
+                $shops = $query->orderByRaw('star_avg = 0')->orderBy('star_avg', 'asc')->get();
+                break;
+            default :
+                // デフォルトはID順
+                $shops = $query->get();
+                break;
+        }
+
+        return view('shop-all', compact('sort', 'areas', 'genres', 'user', 'shops', 'reviews'));
     }
 
     public function detail($shop_id)
