@@ -60,6 +60,45 @@
         </form>
       </div>
     </div>
+    <div class="csv__import">
+      @if(session('shop_create_message'))
+          <div class="shop_create__message">
+              {{ session('shop_create_message') }}
+          </div>
+      @endif
+      <div class="shop-create__card">
+        <div class="card__heading">
+          <p>新規店舗情報の登録</p>
+        </div>
+        <div class="card__content">
+          <p class="csv-import__detail">CSVファイルのインポートにより、新規店舗情報の登録ができます。</p>
+          <p class="csv-import__condition">
+          ・項目は全て入力必須<br>
+          ・店舗名: 50文字以内<br>
+          ・地域:「東京都」「大阪府」「福岡県」のいずれか<br>
+          ・ジャンル:「寿司」「焼肉」「イタリアン」「居酒屋」「ラーメン」のいずれか<br>
+          ・店舗概要: 400文字以内<br>
+          ・画像URL: jpeg、pngのみアップロード可能</p>
+          <form class="csv-import__form" action="/admin/csv_import" method="POST" enctype="multipart/form-data">
+            @csrf
+              <div class="csv-import__input">
+                <input type="file" accept=".csv" name="csvFile" class="" id="csvFile">
+              </div>
+              <div class="csv-form__error__container">
+              @foreach ($errors->get('upload_errors') as $message)
+                  <span class="csv-form__error">{{ $message }}</span>
+                  @if (!$loop->last)
+                      <br>
+                  @endif
+              @endforeach
+              </div>
+              <div class="form__button">
+                <button class="form__button-submit">インポート</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="mail__container">
     @if(session('message'))
