@@ -34,6 +34,21 @@
     margin-right: 2%;
 }
 
+.shop-create__card {
+    width: 75%;
+    height: auto;
+    margin: 0 30px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgb(164, 163, 163);
+    background-color: #fff;
+    margin-right: 2%;
+}
+
+.shop_create__message{
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
 .mail__card {
     width: 90%;
     height: auto;
@@ -103,9 +118,19 @@
 .form__error {
     color: red;
     font-size: 14px;
-    padding-left: 30px;
     text-align: left;
-    padding-left: 50px;
+    padding-left: 60px;
+}
+
+.csv-form__error__container {
+    text-align: left;
+    margin-top: 5px;
+}
+
+.csv-form__error {
+    color: red;
+    font-size: 14px;
+    text-align: left;
 }
 
 .form__button-submit {
@@ -117,6 +142,21 @@
     cursor: pointer;
     margin-top: 25px;
     margin-right: 20px;
+}
+
+.csv-import__detail {
+    text-align: left;
+    font-size: 14px;
+}
+
+.csv-import__condition {
+    text-align: left;
+    font-size: 14px;
+}
+
+.csv-import__input {
+    margin-left: 10px;
+    text-align: left;
 }
 
 .mail-form__button-submit {
@@ -201,10 +241,17 @@
         margin-top: 20px;
     }
 
-    .register__card, .mail__card {
+    .shop-create__card, .mail__card {
         width: 90%;
         height: auto;
         margin: 0 auto;
+    }
+
+    .register__card{
+        width: 90%;
+        height: auto;
+        margin: 0 auto;
+        margin-bottom: 50px;
     }
 }
 

@@ -32,18 +32,25 @@ Route::middleware('verified')->group(function () {
 });
 
 Route::middleware('auth', 'verified')->group(function () {
+    // 利用者マイページ
+    Route::get('/mypage', [ShopController::class, 'mypage']);
+
+    // 予約
     Route::post('/reservation', [ReservationController::class, 'reservation']);
     Route::get('/done', [ReservationController::class, 'done'])->name('done');
     Route::patch('/reservation_update', [ReservationController::class, 'reservationUpdate']);
     Route::delete('/reservation_delete', [ReservationController::class, 'reservationDestroy']);
+    Route::get('/qrcode/{id}', [ReservationController::class, 'qrcode'])->name('qrcode');
+
+    // お気に入り
     Route::post('/favorite', [FavoriteController::class, 'favorite']);
     Route::delete('/favorite_delete', [FavoriteController::class, 'favoriteDestroy']);
-    Route::get('/mypage', [ShopController::class, 'mypage']);
+
+    // レビュー
     Route::get('/review/{shop_id}', [ReviewController::class, 'index'])->name('review');
     Route::post('/review/create', [ReviewController::class, 'create']);
     Route::patch('/review/update', [ReviewController::class, 'update']);
     Route::delete('/review/delete', [ReviewController::class, 'destroy']);
-    Route::get('/qrcode/{id}', [ReservationController::class, 'qrcode'])->name('qrcode');
 
     // 決済
     Route::get('/payment/index/{id}', [PaymentController::class, 'index'])->name('payment.index');
@@ -55,6 +62,7 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/admin/register', [AdminController::class, 'register']);
     Route::get('/admin/done', [AdminController::class, 'done'])->name('admin.done');
     Route::post('/admin/mail', [AdminController::class, 'notificationMail']);
+    Route::post('/admin/csv_import', [AdminController::class, 'csvImport']);
 
     // 店舗代表者権限
     Route::get('/editor/admin', [EditorController::class, 'admin']);
