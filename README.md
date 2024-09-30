@@ -145,7 +145,7 @@ php artisan db:seed
 
 **csvファイルの記述方法(例)**
 
-店舗名,地域,ジャンル,店舗概要,画像URL
+店舗名,地域,ジャンル,店舗概要,画像URL<br>
 test,東京都,焼肉,テスト,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg
 
 
