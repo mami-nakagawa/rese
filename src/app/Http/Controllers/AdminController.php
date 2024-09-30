@@ -92,7 +92,7 @@ class AdminController extends Controller
             try {
                 throw new Exception();
             } catch (Exception $e) {
-                return redirect()->back()->with('shop_create_message','CSVファイルの取得に失敗しました');
+                return redirect()->back()->with('shop_create_message','csvファイルの取得に失敗しました');
             }
         }
     }

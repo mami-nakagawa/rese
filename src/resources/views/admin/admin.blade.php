@@ -71,7 +71,7 @@
           <p>新規店舗情報の登録</p>
         </div>
         <div class="card__content">
-          <p class="csv-import__detail">CSVファイルのインポートにより、新規店舗情報の登録ができます。</p>
+          <p class="csv-import__detail">csvファイルのインポートにより、新規店舗情報の登録ができます。</p>
           <p class="csv-import__condition">
           ・項目は全て入力必須<br>
           ・店舗名: 50文字以内<br>
