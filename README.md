@@ -12,7 +12,7 @@
 
 ## アプリケーション URL
 
-- http://18.176.229.42 (本番環境)
+- http://18.176.229.42 (現在停止中)
 
 ## 機能一覧
 
@@ -55,7 +55,7 @@
 
 **Docker ビルド**
 
-1. `git clone git@github.com:myaa6a/rese.git`
+1. `git clone git@github.com:mami-nakagawa/rese.git`
 2. DockerDesktop アプリを立ち上げる
 3. `docker-compose up -d --build`
 
@@ -74,7 +74,7 @@ mysql:
 1. `docker-compose exec php bash`
 2. `composer install`
 3. 「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.env ファイルを作成
-4. .env で以下smtpサーバ、AWS、Stripeの設定を、使用しているアカウントの内容に変更
+4. .env で以下smtpサーバ、AWS、Stripeの設定を、お持ちのアカウントの内容に変更
 
 ```text
 MAIL_DRIVER=smtp
